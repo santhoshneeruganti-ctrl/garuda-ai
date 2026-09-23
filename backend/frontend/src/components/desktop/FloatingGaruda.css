@@ -1,0 +1,395 @@
+/* ==========================================================
+   FLOATING GARUDA CONTAINER
+   ========================================================== */
+
+.floating-garuda-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-end;
+    pointer-events: none;
+}
+
+/* ==========================================================
+   WRAPPER
+   ========================================================== */
+
+.floating-garuda-wrapper {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    overflow: visible;
+    user-select: none;
+    pointer-events: auto;
+    -webkit-app-region: no-drag;
+}
+
+/* ==========================================================
+   BROWSER & ELECTRON MODES
+   ========================================================== */
+
+.floating-garuda-wrapper.garuda-browser {
+    position: fixed;
+    z-index: 999999;
+    pointer-events: auto;
+}
+
+.floating-garuda-wrapper.garuda-electron {
+    position: relative;
+}
+
+/* ==========================================================
+   GARUDA BUTTON
+   ========================================================== */
+
+.floating-garuda-button {
+    width: 64px;
+    height: 64px;
+    padding: 0;
+    margin: 0;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 50px;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: grab;
+    user-select: none;
+    appearance: none;
+    -webkit-app-region: no-drag;
+    -webkit-user-drag: none;
+    position: relative;
+    left: 0;
+    animation: garudaFloat 3s ease-in-out infinite;
+    transition: filter 0.25s ease;
+}
+
+/* ==========================================================
+   HOVER & ACTIVE STATES
+   ========================================================== */
+
+.floating-garuda-button:hover {
+    filter: drop-shadow(0 0 8px rgba(255, 190, 60, 0.95))
+        drop-shadow(0 0 18px rgba(255, 150, 30, 0.55));
+}
+
+.floating-garuda-button.active {
+    filter: drop-shadow(0 0 8px rgba(80, 170, 255, 0.95))
+        drop-shadow(0 0 18px rgba(80, 140, 255, 0.6));
+}
+
+.floating-garuda-wrapper.garuda-active .floating-garuda-button {
+    animation: garudaFloatListening 2.4s ease-in-out infinite;
+}
+
+.floating-garuda-wrapper.garuda-processing .floating-garuda-button {
+    animation: garudaFloatThinking 1.8s ease-in-out infinite;
+}
+
+.floating-garuda-wrapper.garuda-dragging .floating-garuda-button {
+    cursor: grabbing;
+    animation: none;
+}
+
+.floating-garuda-button:active {
+    transform: scale(0.92);
+}
+
+/* ==========================================================
+   STATUS BUBBLE
+   ========================================================== */
+
+.floating-garuda-status-bubble {
+    position: absolute;
+    bottom: -32px;
+    background: rgba(15, 23, 42, 0.92);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(56, 189, 248, 0.35);
+    color: #e2e8f0;
+    font-size: 11px;
+    font-weight: 500;
+    padding: 4px 10px;
+    border-radius: 20px;
+    white-space: nowrap;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+    pointer-events: none;
+    z-index: 1000;
+}
+
+/* ==========================================================
+   MULTIPLE MATCHES GLASSMORPHIC MODAL
+   ========================================================== */
+
+.garuda-selection-modal {
+    pointer-events: auto;
+    width: 350px;
+    background: linear-gradient(135deg, rgba(13, 23, 42, 0.95), rgba(15, 23, 42, 0.88));
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    border-radius: 20px;
+    padding: 16px;
+    margin-bottom: 12px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7), 0 0 25px rgba(56, 189, 248, 0.15);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    color: #fff;
+    font-family: system-ui, -apple-system, sans-serif;
+    animation: garudaPopup 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes garudaPopup {
+    from {
+        opacity: 0;
+        transform: translateY(12px) scale(0.96);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.garuda-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 6px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.garuda-header-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #cbd5e1;
+}
+
+.garuda-header-icon {
+    font-size: 16px;
+}
+
+.garuda-modal-close {
+    background: transparent;
+    border: none;
+    color: #94a3b8;
+    font-size: 20px;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0 4px;
+    transition: color 0.15s;
+}
+
+.garuda-modal-close:hover {
+    color: #f1f5f9;
+}
+
+/* ==========================================================
+   OPTIONS LIST WITH CUSTOM SLEEK SCROLLBAR
+   ========================================================== */
+
+.garuda-options-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-height: 250px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-right: 6px;
+}
+
+/* Chrome / Electron WebKit Custom Scrollbar */
+.garuda-options-list::-webkit-scrollbar {
+    width: 5px;
+}
+
+.garuda-options-list::-webkit-scrollbar-track {
+    background: rgba(15, 23, 42, 0.6);
+    border-radius: 10px;
+}
+
+.garuda-options-list::-webkit-scrollbar-thumb {
+    background: rgba(56, 189, 248, 0.4);
+    border-radius: 10px;
+    transition: background 0.2s ease;
+}
+
+.garuda-options-list::-webkit-scrollbar-thumb:hover {
+    background: rgba(56, 189, 248, 0.8);
+    box-shadow: 0 0 8px rgba(56, 189, 248, 0.6);
+}
+
+/* ==========================================================
+   BUTTON CARDS (1, 2, 3 BADGES & PDF TAGS)
+   ========================================================== */
+
+.garuda-file-card-btn {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(30, 41, 59, 0.65);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 12px;
+    padding: 10px 12px;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.garuda-file-card-btn:hover {
+    background: rgba(56, 189, 248, 0.15);
+    border-color: rgba(56, 189, 248, 0.5);
+    transform: translateX(-3px);
+    box-shadow: 0 4px 15px rgba(56, 189, 248, 0.2);
+}
+
+.garuda-badge-num {
+    width: 24px;
+    height: 24px;
+    border-radius: 6px;
+    background: #0284c7;
+    color: #fff;
+    font-weight: 700;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.garuda-pdf-icon-box {
+    width: 28px;
+    height: 32px;
+    background: rgba(239, 68, 68, 0.15);
+    border: 1px solid rgba(239, 68, 68, 0.4);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.pdf-icon-label {
+    font-size: 9px;
+    font-weight: 800;
+    color: #f87171;
+}
+
+.garuda-file-info {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    flex-grow: 1;
+}
+
+.garuda-file-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: #f1f5f9;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.garuda-file-sub {
+    font-size: 10px;
+    color: #64748b;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.garuda-arrow-icon {
+    color: #475569;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.garuda-file-card-btn:hover .garuda-arrow-icon {
+    color: #38bdf8;
+}
+
+.garuda-modal-footer {
+    font-size: 11px;
+    color: #94a3b8;
+    text-align: center;
+    padding-top: 2px;
+}
+
+/* ==========================================================
+   ANIMATIONS & ACCESSIBILITY
+   ========================================================== */
+
+@keyframes garudaFloat {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+    100% { transform: translateY(0); }
+}
+
+@keyframes garudaFloatListening {
+    0% {
+        transform: translateY(0) scale(1);
+        filter: drop-shadow(0 0 6px rgba(80, 170, 255, 0.55));
+    }
+    50% {
+        transform: translateY(-7px) scale(1.04);
+        filter: drop-shadow(0 0 10px rgba(80, 190, 255, 0.9))
+            drop-shadow(0 0 22px rgba(80, 140, 255, 0.45));
+    }
+    100% {
+        transform: translateY(0) scale(1);
+        filter: drop-shadow(0 0 6px rgba(80, 170, 255, 0.55));
+    }
+}
+
+@keyframes garudaFloatThinking {
+    0% {
+        transform: translateY(0) scale(1);
+        filter: drop-shadow(0 0 7px rgba(139, 92, 246, 0.55));
+    }
+    50% {
+        transform: translateY(-4px) scale(1.06);
+        filter: drop-shadow(0 0 12px rgba(139, 92, 246, 0.95))
+            drop-shadow(0 0 25px rgba(124, 58, 237, 0.45));
+    }
+    100% {
+        transform: translateY(0) scale(1);
+        filter: drop-shadow(0 0 7px rgba(139, 92, 246, 0.55));
+    }
+}
+
+.floating-garuda-button:focus-visible {
+    outline: 2px solid rgba(96, 165, 250, 0.9);
+    outline-offset: 4px;
+    border-radius: 50%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .floating-garuda-button {
+        animation: none !important;
+    }
+}
+
+@media (max-width: 500px) {
+    .floating-garuda-wrapper {
+        width: 85px;
+        height: 85px;
+    }
+    .floating-garuda-button {
+        width: 56px;
+        height: 56px;
+        font-size: 44px;
+    }
+    .garuda-selection-modal {
+        width: 280px;
+    }
+}

@@ -1,0 +1,741 @@
+/* =========================================================
+   GARUDA AI CHAT THEME (CHATGPT DESKTOP LAYOUT)
+   ========================================================= */
+
+:root {
+    --chat-bg: #0f172a;
+    --chat-text: #f8fafc;
+    --chat-muted: #94a3b8;
+    --chat-border: #334155;
+    --chat-hover: #1e293b;
+
+    --chat-link: var(--accent-primary, #2563eb);
+    --chat-link-hover: var(--accent-hover, #1d4ed8);
+
+    --chat-code-bg: #111827;
+    --chat-code-text: #e2e8f0;
+
+    --chat-table-bg: rgba(15, 23, 42, 0.45);
+
+    --chat-pdf-bg: rgba(255, 255, 255, 0.075);
+    --chat-pdf-border: rgba(255, 255, 255, 0.13);
+
+    --scrollbar-thumb: #475569;
+    --scrollbar-thumb-hover: #64748b;
+}
+
+html[data-theme="light"] {
+    --chat-bg: #f8fafc;
+    --chat-text: #0f172a;
+    --chat-muted: #64748b;
+    --chat-border: #cbd5e1;
+    --chat-hover: #e2e8f0;
+
+    --chat-link: var(--accent-primary, #2563eb);
+    --chat-link-hover: var(--accent-hover, #1d4ed8);
+
+    --chat-code-bg: #1e293b;
+    --chat-code-text: #e2e8f0;
+
+    --chat-table-bg: #ffffff;
+
+    --chat-pdf-bg: #f1f5f9;
+    --chat-pdf-border: #cbd5e1;
+
+    --scrollbar-thumb: #cbd5e1;
+    --scrollbar-thumb-hover: #94a3b8;
+}
+
+/* =========================================================
+   CHAT WINDOW (MAIN SCROLLABLE VIEWPORT)
+   ========================================================= */
+
+.chat-window {
+    flex: 1 1 auto;
+    min-height: 0;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Entire conversation centered */
+
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    padding: 24px 16px 120px;
+
+    background:
+        radial-gradient(
+            circle at 50% -10%,
+            color-mix(
+                in srgb,
+                var(--accent-primary, #2563eb) 7%,
+                transparent
+            ),
+            transparent 38%
+        ),
+        var(--chat-bg);
+
+    color: var(--chat-text);
+    scrollbar-gutter: stable;
+    scroll-behavior: smooth;
+    overscroll-behavior-y: contain;
+}
+
+html.electron-app .chat-window {
+    scroll-behavior: auto !important;
+}
+
+/* =========================================================
+   CHATGPT CENTRAL COLUMN (MAX-WIDTH: 768px)
+   ========================================================= */
+
+.chat-window > * {
+    width: 100%;
+    max-width: 768px !important; /* Exact ChatGPT desktop width */
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+}
+
+/* =========================================================
+   WELCOME SCREEN
+   ========================================================= */
+
+.welcome {
+    width: 100%;
+    max-width: 768px !important;
+    margin: 60px auto 30px auto;
+    text-align: center;
+    padding: 30px 16px;
+    color: var(--chat-muted);
+    animation: welcomeFade 0.45s ease-out;
+}
+
+.welcome h1,
+.welcome h2 {
+    margin: 0 0 12px;
+    color: var(--chat-text);
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.4px;
+}
+
+.welcome p {
+    margin: 0 auto;
+    max-width: 580px;
+    color: var(--chat-muted);
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+.welcome::before {
+    content: "";
+    display: block;
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 20px;
+    border-radius: 20px;
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            rgba(96, 165, 250, 0.9),
+            rgba(37, 99, 235, 0.35) 45%,
+            rgba(124, 58, 237, 0.18) 70%,
+            transparent 72%
+        );
+    box-shadow: 0 0 30px rgba(37, 99, 235, 0.25);
+    opacity: 0.95;
+}
+
+.welcome-actions {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+    width: 100%;
+    margin: 28px auto 0;
+}
+
+.welcome-action {
+    min-height: 76px;
+    padding: 14px;
+    border: 1px solid var(--chat-border);
+    border-radius: 14px;
+    background: var(--chat-hover);
+    color: var(--chat-text);
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.18s ease;
+}
+
+.welcome-action:hover {
+    transform: translateY(-2px);
+    border-color: var(--chat-link);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.welcome-action-title {
+    font-weight: 700;
+    font-size: 13px;
+}
+
+.welcome-action-description {
+    margin-top: 4px;
+    font-size: 11px;
+    color: var(--chat-muted);
+}
+
+@keyframes welcomeFade {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* =========================================================
+   MESSAGE BASE
+   ========================================================= */
+
+.message {
+    position: relative;
+    width: 100%;
+    margin: 16px 0;
+    contain: layout style;
+    animation: fadeIn 0.22s ease-out;
+}
+
+/* =========================================================
+   USER MESSAGE: COMPACT RIGHT-ALIGNED PILL CARD
+   ========================================================= */
+
+.message.user {
+    display: flex;
+    justify-content: flex-end; /* Locks user bubble to the right edge */
+    width: 100%;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+}
+
+.user-message-container {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+.user-message-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 6px;
+    max-width: 75%; /* Doesn't stretch across screen */
+    min-width: 0;
+}
+
+/* User question bubble */
+.user-question-bubble {
+    display: inline-block;
+    width: fit-content !important;
+    max-width: 100% !important;
+    box-sizing: border-box;
+
+    padding: 10px 18px;
+    border-radius: 20px 20px 4px 20px;
+
+    background: linear-gradient(
+        135deg,
+        var(--accent-primary, #2563eb),
+        var(--accent-hover, #1d4ed8)
+    );
+
+    color: #ffffff;
+    font-size: 14.5px;
+    line-height: 1.5;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+
+    box-shadow: 0 4px 14px color-mix(
+        in srgb,
+        var(--accent-primary, #2563eb) 22%,
+        transparent
+    );
+
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.user-question-bubble:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px color-mix(
+        in srgb,
+        var(--accent-primary, #2563eb) 30%,
+        transparent
+    );
+}
+
+.user-question-text {
+    width: 100%;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+    white-space: pre-wrap;
+}
+
+.user-question-bubble .user-message-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 4px;
+    width: 100%;
+    margin-top: 4px;
+}
+
+.user-message-actions .action-btn {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    color: rgba(255, 255, 255, 0.75);
+    cursor: pointer;
+    font-size: 13px;
+    opacity: 0.75;
+    transition: all 0.15s ease;
+}
+
+.user-message-actions .action-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    opacity: 1;
+}
+
+/* =========================================================
+   GARUDA RESPONSE (LEFT-ALIGNED CLEAN READING COLUMN)
+   ========================================================= */
+
+.message.garuda {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 4px 0;
+    background: transparent;
+    color: var(--chat-text);
+    border-radius: 0;
+    box-shadow: none;
+}
+
+.garuda-response-content,
+.garuda-streaming-response {
+    position: relative;
+    width: 100%;
+    font-size: 15px;
+    line-height: 1.75; /* Line-by-line clear reading spacing */
+    letter-spacing: 0.15px;
+    color: var(--chat-text);
+    word-break: break-word;
+    overflow-wrap: anywhere;
+}
+
+/* Paragraphs & Structure */
+.message.garuda p {
+    margin: 0 0 16px 0;
+    line-height: 1.75;
+}
+
+.message.garuda p:last-child {
+    margin-bottom: 0;
+}
+
+/* Headings */
+.message.garuda h1,
+.message.garuda h2,
+.message.garuda h3,
+.message.garuda h4 {
+    margin-top: 22px;
+    margin-bottom: 10px;
+    line-height: 1.35;
+    color: var(--chat-text);
+    letter-spacing: -0.2px;
+}
+
+.message.garuda h1 { font-size: 22px; }
+.message.garuda h2 { font-size: 18px; }
+.message.garuda h3 { font-size: 16px; }
+.message.garuda h4 { font-size: 15px; }
+
+/* Bullet Points & Lists (Like in Screenshot) */
+.message.garuda ul,
+.message.garuda ol {
+    padding-left: 24px;
+    margin: 10px 0 16px 0;
+}
+
+.message.garuda li {
+    margin-bottom: 8px;
+    line-height: 1.65;
+}
+
+/* Inline Code Elements */
+.message code {
+    background: rgba(148, 163, 184, 0.15);
+    padding: 2px 6px;
+    border: 1px solid rgba(148, 163, 184, 0.12);
+    border-radius: 6px;
+    color: var(--chat-code-text);
+    font-family: Consolas, "Courier New", monospace;
+    font-size: 0.9em;
+}
+
+/* Code Blocks */
+.message pre {
+    margin: 14px 0;
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    border-radius: 12px;
+    box-sizing: border-box;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.16);
+}
+
+.message pre::-webkit-scrollbar { height: 6px; }
+.message pre::-webkit-scrollbar-track { background: var(--chat-code-bg); }
+.message pre::-webkit-scrollbar-thumb { background: var(--scrollbar-thumb); border-radius: 10px; }
+
+/* Tables */
+.message table {
+    width: 100%;
+    margin: 16px 0;
+    border-collapse: separate;
+    border-spacing: 0;
+    display: block;
+    max-width: 100%;
+    overflow-x: auto;
+    white-space: nowrap;
+    border-radius: 10px;
+    border: 1px solid var(--chat-border);
+}
+
+.message th,
+.message td {
+    padding: 9px 13px;
+    border-right: 1px solid var(--chat-border);
+    border-bottom: 1px solid var(--chat-border);
+    text-align: left;
+}
+
+.message th:last-child,
+.message td:last-child { border-right: none; }
+.message tr:last-child td { border-bottom: none; }
+
+.message th {
+    background: var(--chat-hover);
+    color: #f1f5f9;
+    font-weight: 600;
+}
+
+.message td {
+    background: rgba(15, 23, 42, 0.45);
+    color: var(--chat-muted);
+}
+
+/* Action Icons at Bottom of Response */
+.message-actions {
+    display: flex;
+    gap: 6px;
+    margin-top: 10px;
+    opacity: 0;
+    transition: opacity 0.18s ease;
+}
+
+.message.garuda:hover .message-actions { opacity: 1; }
+
+.action-btn {
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    color: var(--chat-muted);
+    cursor: pointer;
+    transition: all 0.15s ease;
+    font-size: 14px;
+}
+
+.action-btn:hover {
+    background: var(--chat-hover);
+    border-color: var(--chat-border);
+    color: var(--chat-text);
+}
+
+/* =========================================================
+   THINKING / STREAMING ANIMATIONS
+   ========================================================= */
+
+.garuda-thinking {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    min-height: 34px;
+    color: var(--chat-muted);
+    font-size: 14px;
+    font-weight: 500;
+    user-select: none;
+}
+
+.garuda-thinking-eagle {
+    display: inline-block;
+    font-size: 20px;
+    line-height: 1;
+    animation: eagleThinkingFlight 1.4s ease-in-out infinite;
+    will-change: transform, opacity;
+}
+
+@keyframes eagleThinkingFlight {
+    0% { transform: translateX(0); opacity: 0.35; }
+    50% { transform: translateX(7px); opacity: 1; }
+    100% { transform: translateX(14px); opacity: 0.35; }
+}
+
+.garuda-thinking-text {
+    animation: thinkingTextFade 1.4s ease-in-out infinite;
+}
+
+@keyframes thinkingTextFade {
+    0%, 100% { opacity: 0.55; }
+    50% { opacity: 1; }
+}
+
+.garuda-live-eagle {
+    display: inline-block;
+    margin-left: 7px;
+    font-size: 19px;
+    line-height: 1;
+    vertical-align: baseline;
+    pointer-events: none;
+    user-select: none;
+    animation: eagleCursorFlight 0.9s ease-in-out infinite;
+    will-change: transform, opacity;
+}
+
+@keyframes eagleCursorFlight {
+    0% { transform: translateX(0); opacity: 0.35; }
+    50% { transform: translateX(5px); opacity: 1; }
+    100% { transform: translateX(10px); opacity: 0.35; }
+}
+
+/* =========================================================
+   ATTACHMENTS & SIZING
+   ========================================================= */
+
+.message-pdf-attachments {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    margin-bottom: 4px;
+}
+
+.user-question-bubble .message-pdf-attachments {
+    justify-content: flex-end;
+    margin-bottom: 6px;
+}
+
+.message-pdf-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    max-width: 240px;
+    padding: 6px 10px;
+    border-radius: 8px;
+    background: var(--chat-pdf-bg);
+    border: 1px solid var(--chat-pdf-border);
+    color: var(--chat-text);
+    transition: all 0.15s ease;
+}
+
+.message-pdf-chip:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.22);
+}
+
+.message-pdf-icon { flex-shrink: 0; font-size: 13px; }
+.message-pdf-name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 12px;
+}
+
+.message-image-attachments {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.user-message-content .message-image-attachments {
+    width: auto;
+    max-width: 100%;
+    justify-content: flex-end;
+}
+
+.message-image-button {
+    padding: 0;
+    margin: 0;
+    border: none;
+    background: transparent;
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.message-uploaded-image {
+    width: 110px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 1px solid rgba(148, 163, 184, 0.25);
+    transition: transform 0.18s ease;
+}
+
+.message-uploaded-image:hover { transform: scale(1.03); }
+
+/* =========================================================
+   SCROLLBAR & RESPONSIVENESS
+   ========================================================= */
+
+.chat-window::-webkit-scrollbar { width: 7px; }
+.chat-window::-webkit-scrollbar-track { background: transparent; }
+.chat-window::-webkit-scrollbar-thumb {
+    background: rgba(71, 85, 105, 0.65);
+    border-radius: 10px;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 900px) {
+    .chat-window { padding: 18px 14px 28px; }
+    .user-message-content { max-width: 85%; }
+    .welcome-actions { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 600px) {
+    .user-message-content { max-width: 92%; }
+    .user-question-bubble { padding: 9px 14px; font-size: 14px; }
+}
+/* ================================
+   FULL SCREEN IMAGE VIEWER
+   ================================ */
+
+.image-viewer-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 40px;
+
+  background: rgba(0, 0, 0, 0.82);
+
+  cursor: zoom-out;
+
+  animation: imageViewerFadeIn 0.2s ease;
+}
+
+.image-viewer-overlay img {
+  display: block;
+
+  max-width: 37.5vw;
+  max-height: 37.5vh;
+
+  width: auto;
+  height: auto;
+
+  object-fit: contain;
+
+  border-radius: 10px;
+
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+
+  cursor: default;
+
+  animation: imageViewerZoomIn 0.2s ease;
+}
+
+/* Close button, if present */
+.image-viewer-overlay button {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+
+  width: 42px;
+  height: 42px;
+
+  border: none;
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.12);
+  color: white;
+
+  font-size: 24px;
+
+  cursor: pointer;
+
+  z-index: 2;
+}
+
+.image-viewer-overlay button:hover {
+  background: rgba(255, 255, 255, 0.22);
+}
+
+@keyframes imageViewerFadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes imageViewerZoomIn {
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .image-viewer-overlay {
+    padding: 20px;
+  }
+
+  .image-viewer-overlay img {
+    max-width: 45vw;
+    max-height: 37.5vh;
+  }
+
+  .image-viewer-overlay button {
+    top: 15px;
+    right: 15px;
+  }
+}

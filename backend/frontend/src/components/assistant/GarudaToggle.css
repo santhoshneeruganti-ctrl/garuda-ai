@@ -1,0 +1,448 @@
+/* ==========================================================
+   GARUDA ASSISTANT TOGGLE
+   ========================================================== */
+
+.garuda-toggle {
+
+    width: 100%;
+
+    min-width: 250px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 16px;
+
+    padding: 10px 12px;
+
+    border: 1px solid #e5e7eb;
+
+    border-radius: 16px;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 6px 20px rgba(0, 0, 0, 0.08);
+
+    cursor: pointer;
+
+    transition:
+        background 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease,
+        transform 0.2s ease;
+
+    text-align: left;
+
+    font-family: inherit;
+
+}
+
+
+/* ==========================================================
+   HOVER
+   ========================================================== */
+
+.garuda-toggle:hover {
+
+    background: #fafafa;
+
+    border-color: #d1d5db;
+
+    box-shadow:
+        0 8px 24px rgba(0, 0, 0, 0.10);
+
+    transform: translateY(-1px);
+
+}
+
+
+/* ==========================================================
+   ACTIVE
+   ========================================================== */
+
+.garuda-toggle.active {
+
+    background: #ffffff;
+
+    border-color: #bfdbfe;
+
+    box-shadow:
+        0 8px 28px
+        rgba(37, 99, 235, 0.14);
+
+}
+
+
+/* ==========================================================
+   LEFT CONTENT
+   ========================================================== */
+
+.garuda-toggle-info {
+
+    min-width: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 11px;
+
+}
+
+
+/* ==========================================================
+   EAGLE ICON
+   ========================================================== */
+
+.garuda-toggle-icon {
+
+    width: 40px;
+
+    height: 40px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 13px;
+
+    background: #f3f4f6;
+
+    font-size: 21px;
+
+    transition:
+        background 0.25s ease,
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+
+}
+
+
+.garuda-toggle.active
+.garuda-toggle-icon {
+
+    background: #eff6ff;
+
+    transform: scale(1.05);
+
+    box-shadow:
+        0 4px 12px
+        rgba(37, 99, 235, 0.12);
+
+}
+
+
+/* ==========================================================
+   CONTENT
+   ========================================================== */
+
+.garuda-toggle-content {
+
+    min-width: 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 3px;
+
+}
+
+
+/* ==========================================================
+   TITLE
+   ========================================================== */
+
+.garuda-toggle-title {
+
+    display: block;
+
+    color: #1f2937;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    line-height: 1.2;
+
+}
+
+
+/* ==========================================================
+   STATUS
+   ========================================================== */
+
+.garuda-toggle-status {
+
+    display: block;
+
+    color: #6b7280;
+
+    font-size: 11px;
+
+    line-height: 1.3;
+
+    white-space: nowrap;
+
+}
+
+
+.garuda-toggle.active
+.garuda-toggle-status {
+
+    color: #2563eb;
+
+}
+
+
+/* ==========================================================
+   SWITCH
+   ========================================================== */
+
+.garuda-switch {
+
+    position: relative;
+
+    width: 46px;
+
+    height: 25px;
+
+    flex-shrink: 0;
+
+    display: block;
+
+    border-radius: 999px;
+
+    background: #d1d5db;
+
+    transition:
+        background 0.25s ease,
+        box-shadow 0.25s ease;
+
+}
+
+
+/* ==========================================================
+   SWITCH HOVER
+   ========================================================== */
+
+.garuda-toggle:hover
+.garuda-switch {
+
+    background: #9ca3af;
+
+}
+
+
+/* ==========================================================
+   ACTIVE SWITCH
+   ========================================================== */
+
+.garuda-toggle.active
+.garuda-switch {
+
+    background: #2563eb;
+
+    box-shadow:
+        0 3px 10px
+        rgba(37, 99, 235, 0.25);
+
+}
+
+
+/* ==========================================================
+   KNOB
+   ========================================================== */
+
+.garuda-switch-knob {
+
+    position: absolute;
+
+    top: 3px;
+
+    left: 3px;
+
+    width: 19px;
+
+    height: 19px;
+
+    border-radius: 50%;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 2px 5px
+        rgba(0, 0, 0, 0.20);
+
+    transition:
+        transform 0.25s ease;
+
+}
+
+
+/* ==========================================================
+   MOVE KNOB
+   ========================================================== */
+
+.garuda-toggle.active
+.garuda-switch-knob {
+
+    transform:
+        translateX(21px);
+
+}
+
+
+/* ==========================================================
+   FOCUS
+   ========================================================== */
+
+.garuda-toggle:focus-visible {
+
+    outline: none;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(37, 99, 235, 0.20),
+        0 8px 24px
+        rgba(0, 0, 0, 0.08);
+
+}
+
+
+/* ==========================================================
+   ACTIVE ICON PULSE
+   ========================================================== */
+
+.garuda-toggle.active
+.garuda-toggle-icon {
+
+    animation:
+        garudaPulse 2s ease-in-out infinite;
+
+}
+
+
+@keyframes garudaPulse {
+
+    0%,
+    100% {
+
+        box-shadow:
+            0 4px 12px
+            rgba(37, 99, 235, 0.10);
+
+    }
+
+    50% {
+
+        box-shadow:
+            0 4px 18px
+            rgba(37, 99, 235, 0.22);
+
+    }
+
+}
+
+
+/* ==========================================================
+   DISABLED / SAFETY
+   ========================================================== */
+
+.garuda-toggle:disabled {
+
+    opacity: 0.6;
+
+    cursor: not-allowed;
+
+    transform: none;
+
+}
+/* ==========================================================
+   JARVIS STATUS STATES
+   ========================================================== */
+
+.garuda-toggle-status.listening {
+    color: #2563eb;
+    animation: garudaListening 1.2s ease-in-out infinite;
+}
+
+.garuda-toggle-status.processing {
+    color: #7c3aed;
+}
+
+.garuda-toggle-status.error {
+    color: #dc2626;
+}
+
+
+/* ==========================================================
+   ICON STATES
+   ========================================================== */
+
+.garuda-toggle-icon.listening {
+    background: #eff6ff;
+    animation: garudaListeningIcon 1s ease-in-out infinite;
+}
+
+.garuda-toggle-icon.processing {
+    background: #f5f3ff;
+    animation: garudaProcessingIcon 1.2s linear infinite;
+}
+
+.garuda-toggle-icon.error {
+    background: #fef2f2;
+}
+
+
+/* ==========================================================
+   ANIMATIONS
+   ========================================================== */
+
+@keyframes garudaListening {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.55;
+    }
+
+}
+
+
+@keyframes garudaListeningIcon {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.08);
+    }
+
+}
+
+
+@keyframes garudaProcessingIcon {
+
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+
+}

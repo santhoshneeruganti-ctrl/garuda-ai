@@ -1,0 +1,597 @@
+/* =========================================================
+   GARUDA AI
+   SMART PDF TOOLS
+   RADIAL MENU
+   ========================================================= */
+
+
+/* =========================================================
+   THEME VARIABLES
+   ========================================================= */
+
+:root {
+
+    /* -----------------------------------------------------
+       DARK MODE
+    ----------------------------------------------------- */
+
+    --ai-tools-overlay:
+        rgba(
+            0,
+            0,
+            0,
+            0.22
+        );
+
+    --ai-tools-bg:
+        #1E293B;
+
+    --ai-tools-bg-hover:
+        #273449;
+
+    --ai-tools-border:
+        #334155;
+
+    --ai-tools-text:
+        #F8FAFC;
+
+    --ai-tools-shadow:
+        0 10px 30px
+        rgba(
+            0,
+            0,
+            0,
+            0.28
+        );
+
+    --ai-tools-hover-shadow:
+        0 14px 35px
+        rgba(
+            37,
+            99,
+            235,
+            0.28
+        );
+
+}
+
+
+/* =========================================================
+   LIGHT MODE
+   ========================================================= */
+
+html[data-theme="light"] {
+
+    --ai-tools-overlay:
+        rgba(
+            15,
+            23,
+            42,
+            0.08
+        );
+
+    --ai-tools-bg:
+        #FFFFFF;
+
+    --ai-tools-bg-hover:
+        #F1F5F9;
+
+    --ai-tools-border:
+        #D7DEE8;
+
+    --ai-tools-text:
+        #0F172A;
+
+    --ai-tools-shadow:
+        0 10px 30px
+        rgba(
+            15,
+            23,
+            42,
+            0.12
+        );
+
+    --ai-tools-hover-shadow:
+        0 14px 35px
+        rgba(
+            37,
+            99,
+            235,
+            0.18
+        );
+
+}
+
+
+/* =========================================================
+   BACKGROUND OVERLAY
+   ========================================================= */
+
+.ai-tools-overlay {
+
+    position: fixed;
+
+    inset: 0;
+
+    background:
+        var(--ai-tools-overlay);
+
+    backdrop-filter:
+        blur(2px);
+
+    -webkit-backdrop-filter:
+        blur(2px);
+
+    z-index: 998;
+
+    cursor: default;
+
+}
+
+
+/* =========================================================
+   RADIAL MENU WRAPPER
+   ========================================================= */
+
+.ai-tools-menu {
+
+    position: fixed;
+
+    left: 50%;
+
+    bottom: 130px;
+
+    transform:
+        translateX(-50%);
+
+    width: 420px;
+
+    height: 420px;
+
+    pointer-events: none;
+
+    z-index: 999;
+
+}
+
+
+/* =========================================================
+   TOOL BUTTON
+   ========================================================= */
+
+.ai-tool-button {
+
+    position: absolute;
+
+    width: 80px;
+
+    height: 80px;
+
+    padding: 0;
+
+    border-radius: 50%;
+
+    pointer-events: auto;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 2px;
+
+    background:
+        var(--ai-tools-bg);
+
+    border:
+        1px solid
+        var(--ai-tools-border);
+
+    color:
+        var(--ai-tools-text);
+
+    cursor: pointer;
+
+    outline: none;
+
+    transform:
+        translate(-50%, -50%);
+
+    box-shadow:
+        var(--ai-tools-shadow);
+
+    transition:
+        background-color 0.22s ease,
+        border-color 0.22s ease,
+        color 0.22s ease,
+        box-shadow 0.22s ease,
+        transform 0.22s ease;
+
+}
+
+
+/* =========================================================
+   TOOL BUTTON HOVER
+   ========================================================= */
+
+.ai-tool-button:hover {
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--accent-primary),
+            var(--accent-secondary)
+        );
+
+    border-color:
+        var(--accent-primary);
+
+    color:
+        #FFFFFF;
+
+    transform:
+        translate(-50%, -50%)
+        scale(1.10);
+
+    box-shadow:
+        var(--ai-tools-hover-shadow);
+
+}
+
+
+/* =========================================================
+   TOOL BUTTON ACTIVE
+   ========================================================= */
+
+.ai-tool-button:active {
+
+    transform:
+        translate(-50%, -50%)
+        scale(0.96);
+
+}
+
+
+/* =========================================================
+   TOOL BUTTON FOCUS
+   ========================================================= */
+
+.ai-tool-button:focus-visible {
+
+    outline:
+        2px solid
+        var(--accent-primary);
+
+    outline-offset:
+        4px;
+
+}
+
+
+/* =========================================================
+   TOOL ICON
+   ========================================================= */
+
+.ai-tool-icon {
+
+    width: 30px;
+
+    height: 30px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 24px;
+
+    line-height: 1;
+
+    margin-bottom: 3px;
+
+    user-select: none;
+
+    transition:
+        transform 0.22s ease;
+
+}
+
+
+/* =========================================================
+   ICON HOVER
+   ========================================================= */
+
+.ai-tool-button:hover
+.ai-tool-icon {
+
+    transform:
+        scale(1.08);
+
+}
+
+
+/* =========================================================
+   TOOL TITLE
+   ========================================================= */
+
+.ai-tool-title {
+
+    max-width: 70px;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+
+    font-size: 11px;
+
+    line-height: 1.2;
+
+    font-weight: 700;
+
+    color:
+        inherit;
+
+    text-align: center;
+
+    user-select: none;
+
+}
+
+
+/* =========================================================
+   LIGHT MODE TOOL TITLE
+   ========================================================= */
+
+html[data-theme="light"]
+.ai-tool-title {
+
+    color:
+        var(--ai-tools-text);
+
+}
+
+
+/* =========================================================
+   DARK MODE TOOL TITLE
+   ========================================================= */
+
+html:not([data-theme="light"])
+.ai-tool-title {
+
+    color:
+        var(--ai-tools-text);
+
+}
+
+
+/* =========================================================
+   LIGHT MODE HOVER TITLE
+   ========================================================= */
+
+html[data-theme="light"]
+.ai-tool-button:hover
+.ai-tool-title {
+
+    color:
+        #FFFFFF;
+
+}
+
+
+/* =========================================================
+   LIGHT MODE NORMAL BUTTON
+   ========================================================= */
+
+html[data-theme="light"]
+.ai-tool-button {
+
+    background:
+        #FFFFFF;
+
+    border-color:
+        #D7DEE8;
+
+    color:
+        #0F172A;
+
+}
+
+
+/* =========================================================
+   LIGHT MODE HOVER
+   ========================================================= */
+
+html[data-theme="light"]
+.ai-tool-button:hover {
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--accent-primary),
+            var(--accent-secondary)
+        );
+
+    border-color:
+        var(--accent-primary);
+
+    color:
+        #FFFFFF;
+
+}
+
+
+/* =========================================================
+   DARK MODE NORMAL BUTTON
+   ========================================================= */
+
+html:not([data-theme="light"])
+.ai-tool-button {
+
+    background:
+        #1E293B;
+
+    border-color:
+        #334155;
+
+    color:
+        #F8FAFC;
+
+}
+
+
+/* =========================================================
+   DARK MODE HOVER
+   ========================================================= */
+
+html:not([data-theme="light"])
+.ai-tool-button:hover {
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--accent-primary),
+            var(--accent-secondary)
+        );
+
+    border-color:
+        var(--accent-primary);
+
+    color:
+        #FFFFFF;
+
+}
+
+
+/* =========================================================
+   MENU RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+    .ai-tools-menu {
+
+        width: 360px;
+
+        height: 360px;
+
+        bottom: 120px;
+
+    }
+
+
+    .ai-tool-button {
+
+        width: 70px;
+
+        height: 70px;
+
+    }
+
+
+    .ai-tool-icon {
+
+        font-size: 21px;
+
+    }
+
+
+    .ai-tool-title {
+
+        font-size: 10px;
+
+        max-width: 62px;
+
+    }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+    .ai-tools-menu {
+
+        width: 300px;
+
+        height: 300px;
+
+        bottom: 110px;
+
+    }
+
+
+    .ai-tool-button {
+
+        width: 62px;
+
+        height: 62px;
+
+    }
+
+
+    .ai-tool-icon {
+
+        width: 25px;
+
+        height: 25px;
+
+        font-size: 19px;
+
+    }
+
+
+    .ai-tool-title {
+
+        font-size: 9px;
+
+        max-width: 55px;
+
+    }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (
+    prefers-reduced-motion: reduce
+) {
+
+    .ai-tool-button {
+
+        transition:
+            background-color 0.15s ease,
+            border-color 0.15s ease,
+            color 0.15s ease;
+
+    }
+
+
+    .ai-tool-button:hover {
+
+        transform:
+            translate(-50%, -50%);
+
+    }
+
+
+    .ai-tool-button:hover
+    .ai-tool-icon {
+
+        transform:
+            none;
+
+    }
+
+}

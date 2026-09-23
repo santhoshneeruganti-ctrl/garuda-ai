@@ -1,0 +1,1462 @@
+/* =========================================================
+   GARUDA AI PROFILE
+   DARK + LIGHT THEME
+   ========================================================= */
+
+
+/* =========================================================
+   PROFILE PAGE
+   ========================================================= */
+
+.profile-page {
+
+  width: 100%;
+
+  min-height: 100%;
+
+  box-sizing: border-box;
+
+  display: flex;
+
+  align-items: flex-start;
+
+  justify-content: center;
+
+  padding: 40px 24px;
+
+  overflow-y: auto;
+
+  background:
+    var(--bg-primary, #0b1120);
+
+  color:
+    var(--text-primary, #e5e7eb);
+
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease;
+
+}
+
+
+/* =========================================================
+   PROFILE CARD
+   ========================================================= */
+
+.profile-card {
+
+  width: 100%;
+
+  max-width: 620px;
+
+  box-sizing: border-box;
+
+  padding: 28px;
+
+  border:
+    1px solid
+    var(--border-primary, #1f2937);
+
+  border-radius: 18px;
+
+  background:
+    var(--bg-secondary, #111827);
+
+  color:
+    var(--text-primary, #f9fafb);
+
+  box-shadow:
+    var(--shadow-large,
+      0 18px 50px
+      rgba(0, 0, 0, 0.25)
+    );
+
+  transition:
+    background-color 0.25s ease,
+    border-color 0.25s ease,
+    color 0.25s ease,
+    box-shadow 0.25s ease;
+
+}
+
+
+/* =========================================================
+   PROFILE HEADER
+   ========================================================= */
+
+.profile-header {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 22px;
+
+  padding-bottom: 24px;
+
+  border-bottom:
+    1px solid
+    var(--border-primary, #1f2937);
+
+}
+
+
+.profile-back-btn {
+
+  width: fit-content;
+
+  padding: 7px 11px;
+
+  border:
+    1px solid
+    var(--border-secondary, #374151);
+
+  border-radius: 8px;
+
+  background: transparent;
+
+  color:
+    var(--text-muted, #9ca3af);
+
+  font-family: inherit;
+
+  font-size: 12px;
+
+  cursor: pointer;
+
+  transition:
+    background 0.18s ease,
+    color 0.18s ease,
+    border-color 0.18s ease;
+
+}
+
+
+.profile-back-btn:hover {
+
+  background:
+    var(--bg-tertiary, #1f2937);
+
+  color:
+    var(--text-primary, #f3f4f6);
+
+  border-color:
+    var(--accent-primary, #2563eb);
+
+}
+
+
+/* =========================================================
+   PROFILE TITLE
+   ========================================================= */
+
+.profile-title {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 13px;
+
+}
+
+
+.profile-title-icon {
+
+  width: 44px;
+
+  height: 44px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: 12px;
+
+  background:
+    var(--bg-tertiary, #1f2937);
+
+  font-size: 20px;
+
+}
+
+
+.profile-title h1 {
+
+  margin: 0;
+
+  color:
+    var(--text-primary, #f9fafb);
+
+  font-size: 22px;
+
+  font-weight: 700;
+
+}
+
+
+.profile-title p {
+
+  margin: 5px 0 0;
+
+  color:
+    var(--text-muted, #6b7280);
+
+  font-size: 12px;
+
+}
+
+
+/* =========================================================
+   AVATAR
+   ========================================================= */
+
+.profile-avatar-section {
+
+  padding: 28px 0;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  border-bottom:
+    1px solid
+    var(--border-primary, #1f2937);
+
+}
+
+
+.profile-avatar {
+
+  width: 76px;
+
+  height: 76px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--accent-primary, #2563eb),
+      var(--accent-secondary, #7c3aed)
+    );
+
+  color: #ffffff;
+
+  font-size: 28px;
+
+  font-weight: 700;
+
+  box-shadow:
+    0 10px 30px
+    rgba(
+      37,
+      99,
+      235,
+      0.25
+    );
+
+}
+
+
+.profile-display-name {
+
+  margin-top: 13px;
+
+  color:
+    var(--text-primary, #f9fafb);
+
+  font-size: 17px;
+
+  font-weight: 600;
+
+}
+
+
+.profile-status {
+
+  margin-top: 7px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 6px;
+
+  color:
+    var(--text-muted, #9ca3af);
+
+  font-size: 11px;
+
+}
+
+
+.profile-status-dot {
+
+  width: 6px;
+
+  height: 6px;
+
+  border-radius: 50%;
+
+  background: #22c55e;
+
+}
+
+
+/* =========================================================
+   PROFILE INFORMATION
+   ========================================================= */
+
+.profile-info {
+
+  padding: 8px 0;
+
+}
+
+
+.profile-info-row {
+
+  min-height: 62px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 20px;
+
+  border-bottom:
+    1px solid
+    var(--border-primary, #1f2937);
+
+}
+
+
+.profile-info-row:last-child {
+
+  border-bottom: none;
+
+}
+
+
+.profile-info-label {
+
+  color:
+    var(--text-muted, #6b7280);
+
+  font-size: 12px;
+
+  font-weight: 500;
+
+}
+
+
+.profile-info-value {
+
+  max-width: 65%;
+
+  overflow: hidden;
+
+  color:
+    var(--text-secondary, #e5e7eb);
+
+  font-size: 13px;
+
+  font-weight: 500;
+
+  text-align: right;
+
+  text-overflow: ellipsis;
+
+  white-space: nowrap;
+
+}
+
+
+.profile-active {
+
+  color: #22c55e;
+
+}
+
+
+/* =========================================================
+   EDIT USERNAME INPUT
+   ========================================================= */
+
+.profile-edit-input {
+
+  width: 65%;
+
+  min-width: 180px;
+
+  padding: 10px 12px;
+
+  box-sizing: border-box;
+
+  border:
+    1px solid
+    var(--border-secondary, #374151);
+
+  border-radius: 9px;
+
+  background:
+    var(--input-bg, #111827);
+
+  color:
+    var(--text-primary, #f9fafb);
+
+  font-family: inherit;
+
+  font-size: 13px;
+
+  font-weight: 500;
+
+  outline: none;
+
+  text-align: right;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+
+}
+
+
+.profile-edit-input::placeholder {
+
+  color:
+    var(--text-subtle, #6b7280);
+
+}
+
+
+.profile-edit-input:focus {
+
+  border-color:
+    var(--accent-primary, #2563eb);
+
+  box-shadow:
+    0 0 0 3px
+    rgba(
+      37,
+      99,
+      235,
+      0.12
+    );
+
+}
+
+
+.profile-edit-input:disabled {
+
+  opacity: 0.6;
+
+  cursor: not-allowed;
+
+}
+
+
+/* =========================================================
+   SAVE MESSAGE
+   ========================================================= */
+
+.profile-save-message {
+
+  margin-top: 16px;
+
+  padding: 12px 14px;
+
+  border:
+    1px solid
+    rgba(
+      239,
+      68,
+      68,
+      0.35
+    );
+
+  border-radius: 10px;
+
+  background:
+    rgba(
+      127,
+      29,
+      29,
+      0.12
+    );
+
+  color:
+    #fca5a5;
+
+  font-size: 13px;
+
+  line-height: 1.5;
+
+}
+
+
+.profile-save-message.success {
+
+  border-color:
+    rgba(
+      34,
+      197,
+      94,
+      0.35
+    );
+
+  background:
+    rgba(
+      22,
+      101,
+      52,
+      0.14
+    );
+
+  color:
+    #86efac;
+
+}
+
+
+/* =========================================================
+   PROFILE ACTIONS
+   ========================================================= */
+
+.profile-actions {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 12px;
+
+  margin-top: 28px;
+
+}
+
+
+/* =========================================================
+   EDIT PROFILE BUTTON
+   ========================================================= */
+
+.profile-edit-btn {
+
+  width: 100%;
+
+  min-height: 48px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 9px;
+
+  border:
+    1px solid
+    rgba(
+      59,
+      130,
+      246,
+      0.4
+    );
+
+  border-radius: 12px;
+
+  background:
+    rgba(
+      37,
+      99,
+      235,
+      0.12
+    );
+
+  color:
+    #93c5fd;
+
+  font-family: inherit;
+
+  font-size: 14px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+
+}
+
+
+.profile-edit-btn:hover {
+
+  background:
+    rgba(
+      37,
+      99,
+      235,
+      0.22
+    );
+
+  border-color:
+    rgba(
+      96,
+      165,
+      250,
+      0.65
+    );
+
+  transform:
+    translateY(-1px);
+
+}
+
+
+.profile-edit-btn:active {
+
+  transform:
+    scale(0.98);
+
+}
+
+
+/* =========================================================
+   SAVE PROFILE BUTTON
+   ========================================================= */
+
+.profile-save-btn {
+
+  width: 100%;
+
+  min-height: 48px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 9px;
+
+  border:
+    1px solid
+    var(--accent-primary, #2563eb);
+
+  border-radius: 12px;
+
+  background:
+    var(--accent-primary, #2563eb);
+
+  color: #ffffff;
+
+  font-family: inherit;
+
+  font-size: 14px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease,
+    opacity 0.2s ease;
+
+}
+
+
+.profile-save-btn:hover {
+
+  background:
+    var(--accent-hover, #1d4ed8);
+
+  transform:
+    translateY(-1px);
+
+}
+
+
+.profile-save-btn:active {
+
+  transform:
+    scale(0.98);
+
+}
+
+
+.profile-save-btn:disabled {
+
+  opacity: 0.6;
+
+  cursor: not-allowed;
+
+  transform: none;
+
+}
+
+
+/* =========================================================
+   CANCEL BUTTON
+   ========================================================= */
+
+.profile-cancel-btn {
+
+  width: 100%;
+
+  min-height: 44px;
+
+  border:
+    1px solid
+    var(--border-secondary, #374151);
+
+  border-radius: 10px;
+
+  background:
+    transparent;
+
+  color:
+    var(--text-secondary, #d1d5db);
+
+  font-family: inherit;
+
+  font-size: 13px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
+
+}
+
+
+.profile-cancel-btn:hover {
+
+  background:
+    var(--bg-tertiary, #1f2937);
+
+  border-color:
+    var(--accent-primary, #2563eb);
+
+  color:
+    var(--text-primary, #ffffff);
+
+}
+
+
+.profile-cancel-btn:disabled {
+
+  opacity: 0.5;
+
+  cursor: not-allowed;
+
+}
+
+
+/* =========================================================
+   CHANGE PASSWORD BUTTON
+   ========================================================= */
+
+.profile-change-password-btn {
+
+  width: 100%;
+
+  min-height: 52px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 9px;
+
+  border:
+    1px solid
+    rgba(
+      99,
+      102,
+      241,
+      0.4
+    );
+
+  border-radius: 12px;
+
+  background:
+    rgba(
+      79,
+      70,
+      229,
+      0.12
+    );
+
+  color:
+    #c7d2fe;
+
+  font-family: inherit;
+
+  font-size: 15px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+
+}
+
+
+.profile-change-password-btn:hover {
+
+  background:
+    rgba(
+      79,
+      70,
+      229,
+      0.22
+    );
+
+  border-color:
+    rgba(
+      129,
+      140,
+      248,
+      0.65
+    );
+
+  transform:
+    translateY(-1px);
+
+}
+
+
+.profile-change-password-btn span {
+
+  font-size: 17px;
+
+}
+
+
+/* =========================================================
+   LOGOUT
+   ========================================================= */
+
+.profile-logout-btn {
+
+  width: 100%;
+
+  min-height: 48px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 8px;
+
+  border:
+    1px solid
+    var(--danger-bg, #7f1d1d);
+
+  border-radius: 10px;
+
+  background:
+    rgba(
+      127,
+      29,
+      29,
+      0.12
+    );
+
+  color:
+    var(--danger-text, #fca5a5);
+
+  font-family: inherit;
+
+  font-size: 13px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background 0.18s ease,
+    border-color 0.18s ease,
+    transform 0.18s ease;
+
+}
+
+
+.profile-logout-btn:hover {
+
+  background:
+    rgba(
+      127,
+      29,
+      29,
+      0.25
+    );
+
+  border-color:
+    #991b1b;
+
+  transform:
+    translateY(-1px);
+
+}
+
+
+.profile-logout-btn:active {
+
+  transform:
+    scale(0.98);
+
+}
+
+
+/* =========================================================
+   LOADING
+   ========================================================= */
+
+.profile-loading {
+
+  padding:
+    60px 20px;
+
+  text-align: center;
+
+  color:
+    var(--text-muted, #9ca3af);
+
+  font-size: 13px;
+
+}
+
+
+/* =========================================================
+   ERROR
+   ========================================================= */
+
+.profile-error {
+
+  padding: 25px;
+
+  border:
+    1px solid
+    var(--danger-bg, #7f1d1d);
+
+  border-radius: 10px;
+
+  background:
+    rgba(
+      127,
+      29,
+      29,
+      0.12
+    );
+
+  color:
+    var(--danger-text, #fca5a5);
+
+  font-size: 13px;
+
+  line-height: 1.5;
+
+  text-align: center;
+
+}
+
+
+/* =========================================================
+   CHANGE PASSWORD INTRO
+   ========================================================= */
+
+.change-password-intro {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 16px;
+
+  padding: 20px;
+
+  margin: 24px 0;
+
+  background:
+    var(--bg-tertiary, #1f2937);
+
+  border:
+    1px solid
+    var(--border-primary, #293548);
+
+  border-radius: 16px;
+
+}
+
+
+.change-password-icon {
+
+  width: 52px;
+
+  height: 52px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border-radius: 14px;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--accent-primary, #2563eb),
+      var(--accent-secondary, #7c3aed)
+    );
+
+  font-size: 24px;
+
+}
+
+
+.change-password-intro h2 {
+
+  margin:
+    0 0 5px;
+
+  color:
+    var(--text-primary, #f8fafc);
+
+  font-size: 17px;
+
+  font-weight: 700;
+
+}
+
+
+.change-password-intro p {
+
+  margin: 0;
+
+  color:
+    var(--text-muted, #94a3b8);
+
+  font-size: 14px;
+
+  line-height: 1.5;
+
+}
+
+
+/* =========================================================
+   CHANGE PASSWORD FORM
+   ========================================================= */
+
+.change-password-form {
+
+  width: 100%;
+
+}
+
+
+.change-password-form .auth-field {
+
+  margin-bottom: 20px;
+
+}
+
+
+.change-password-form .auth-field label {
+
+  display: block;
+
+  margin-bottom: 8px;
+
+  color:
+    var(--text-secondary, #e2e8f0);
+
+  font-size: 14px;
+
+  font-weight: 600;
+
+}
+
+
+.change-password-form .auth-field input {
+
+  width: 100%;
+
+  box-sizing: border-box;
+
+  padding: 14px 16px;
+
+  border-radius: 12px;
+
+  border:
+    1px solid
+    var(--border-secondary, #334155);
+
+  background:
+    var(--input-bg, #111827);
+
+  color:
+    var(--text-primary, #f8fafc);
+
+  outline: none;
+
+  font-size: 15px;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+
+}
+
+
+.change-password-form .auth-field input::placeholder {
+
+  color:
+    var(--text-subtle, #64748b);
+
+}
+
+
+.change-password-form .auth-field input:focus {
+
+  border-color:
+    var(--accent-primary, #6366f1);
+
+  background:
+    var(--input-bg, #111827);
+
+  box-shadow:
+    0 0 0 3px
+    rgba(
+      99,
+      102,
+      241,
+      0.15
+    );
+
+}
+
+
+.change-password-form .auth-field input:disabled {
+
+  opacity: 0.6;
+
+  cursor: not-allowed;
+
+}
+
+
+/* =========================================================
+   PASSWORD REQUIREMENT
+   ========================================================= */
+
+.password-requirement {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 7px;
+
+  margin:
+    -5px 0 20px;
+
+  color:
+    var(--text-muted, #94a3b8);
+
+  font-size: 13px;
+
+}
+
+
+.password-requirement span {
+
+  color:
+    var(--accent-primary, #6366f1);
+
+  font-size: 18px;
+
+}
+
+
+/* =========================================================
+   SUCCESS
+   ========================================================= */
+
+.auth-success {
+
+  padding: 13px 15px;
+
+  margin-bottom: 16px;
+
+  border:
+    1px solid
+    rgba(
+      34,
+      197,
+      94,
+      0.35
+    );
+
+  border-radius: 12px;
+
+  background:
+    rgba(
+      22,
+      101,
+      52,
+      0.18
+    );
+
+  color:
+    #86efac;
+
+  font-size: 14px;
+
+  line-height: 1.5;
+
+}
+
+
+/* =========================================================
+   CHANGE PASSWORD NOTE
+   ========================================================= */
+
+.change-password-note {
+
+  margin-top: 20px;
+
+  padding: 12px 14px;
+
+  border:
+    1px solid
+    var(--border-primary, #293548);
+
+  border-radius: 10px;
+
+  background:
+    var(--bg-primary, #0f172a);
+
+  color:
+    var(--text-muted, #64748b);
+
+  font-size: 11px;
+
+  line-height: 1.5;
+
+  text-align: center;
+
+}
+
+
+/* =========================================================
+   LIGHT THEME REFINEMENTS
+   ========================================================= */
+
+html[data-theme="light"] .profile-save-message {
+
+  border-color:
+    #bbf7d0;
+
+  background:
+    #f0fdf4;
+
+  color:
+    #166534;
+
+}
+
+
+html[data-theme="light"] .profile-save-message.success {
+
+  border-color:
+    #bbf7d0;
+
+  background:
+    #f0fdf4;
+
+  color:
+    #166534;
+
+}
+
+
+html[data-theme="light"] .profile-change-password-btn {
+
+  color:
+    #4338ca;
+
+  background:
+    #eef2ff;
+
+  border-color:
+    #c7d2fe;
+
+}
+
+
+html[data-theme="light"] .profile-edit-btn {
+
+  color:
+    #1d4ed8;
+
+  background:
+    #eff6ff;
+
+  border-color:
+    #bfdbfe;
+
+}
+
+
+html[data-theme="light"] .profile-logout-btn {
+
+  background:
+    #fef2f2;
+
+  border-color:
+    #fecaca;
+
+  color:
+    #b91c1c;
+
+}
+
+
+html[data-theme="light"] .profile-active {
+
+  color:
+    #15803d;
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 650px) {
+
+  .profile-page {
+
+    padding:
+      20px 14px;
+
+  }
+
+
+  .profile-card {
+
+    padding: 20px;
+
+    border-radius: 14px;
+
+  }
+
+
+  .profile-title h1 {
+
+    font-size: 19px;
+
+  }
+
+
+  .profile-info-row {
+
+    min-height: 56px;
+
+  }
+
+
+  .profile-edit-input {
+
+    min-width: 160px;
+
+  }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 450px) {
+
+  .profile-info-row {
+
+    align-items: flex-start;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    gap: 5px;
+
+    padding:
+      12px 0;
+
+  }
+
+
+  .profile-info-value {
+
+    max-width: 100%;
+
+    text-align: left;
+
+  }
+
+
+  .profile-edit-input {
+
+    width: 100%;
+
+    min-width: 0;
+
+    text-align: left;
+
+  }
+
+
+  .change-password-intro {
+
+    align-items: flex-start;
+
+  }
+
+}

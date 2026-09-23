@@ -1,0 +1,729 @@
+/* ============================================================
+   GARUDA AI
+   INPUT BAR / COMPOSER (Centered & Compact Width)
+   Premium Dark UI
+   ============================================================ */
+
+
+/* ============================================================
+   MAIN INPUT BAR
+   ============================================================ */
+
+.input-bar {
+    position: relative;
+    flex: 0 0 auto;
+    width: 100%;
+    padding: 6px 16px 12px;
+    box-sizing: border-box;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+}
+
+
+/* ============================================================
+   MAIN COMPOSER (Centered with restricted width)
+   ============================================================ */
+
+.garuda-composer {
+    position: relative;
+    width: 100%;
+    max-width: 768px;
+    margin: 0 auto;
+    padding: 6px 10px;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(31, 43, 62, 0.96),
+            rgba(22, 32, 49, 0.98)
+        );
+    border: 1px solid rgba(148, 163, 184, 0.18);
+    border-radius: 18px;
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.garuda-composer:focus-within {
+    border-color: rgba(45, 212, 191, 0.58);
+    box-shadow:
+        0 12px 35px rgba(0, 0, 0, 0.35),
+        0 0 0 1px rgba(45, 212, 191, 0.10),
+        0 0 20px rgba(45, 212, 191, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+
+/* ============================================================
+   HIDDEN FILE INPUT
+   ============================================================ */
+
+.hidden-file-input {
+    display: none;
+}
+
+
+/* ============================================================
+   INPUT ROW
+   ============================================================ */
+
+.composer-input-row {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    width: 100%;
+    min-height: 38px;
+    gap: 4px;
+}
+
+
+/* ============================================================
+   GENERIC ICON BUTTON
+   ============================================================ */
+
+.composer-icon-btn {
+    flex: 0 0 34px;
+    width: 34px;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(148, 163, 184, 0.12);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.045);
+    color: #e2e8f0;
+    cursor: pointer;
+    font-size: 15px;
+    transition:
+        transform 0.18s ease,
+        background 0.18s ease,
+        border-color 0.18s ease,
+        box-shadow 0.18s ease;
+}
+
+
+.composer-icon-btn:hover {
+    transform: translateY(-1px);
+    background: rgba(255, 255, 255, 0.09);
+    border-color: rgba(148, 163, 184, 0.25);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+}
+
+
+.composer-icon-btn:active {
+    transform: scale(0.94);
+}
+
+
+.composer-icon-btn:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+    transform: none;
+}
+
+
+/* ============================================================
+   ATTACHMENT BUTTON
+   ============================================================ */
+
+.attachment-wrapper {
+    position: relative;
+    flex: 0 0 auto;
+}
+
+
+.composer-attach-btn.active {
+    background: rgba(99, 102, 241, 0.18);
+    border-color: rgba(99, 102, 241, 0.42);
+    color: #c7d2fe;
+}
+
+
+.attach-plus {
+    font-size: 22px;
+    font-weight: 300;
+    line-height: 1;
+}
+
+
+/* ============================================================
+   ATTACHMENT POPUP
+   ============================================================ */
+
+.attachment-menu {
+    position: absolute;
+    left: 0;
+    bottom: calc(100% + 10px);
+    width: 250px;
+    padding: 8px;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(28, 39, 58, 0.98),
+            rgba(16, 25, 41, 0.99)
+        );
+    border: 1px solid rgba(148, 163, 184, 0.2);
+    border-radius: 16px;
+    box-shadow:
+        0 18px 45px rgba(0, 0, 0, 0.45),
+        0 0 0 1px rgba(255, 255, 255, 0.025);
+    backdrop-filter: blur(22px);
+    -webkit-backdrop-filter: blur(22px);
+    animation: attachmentMenuIn 0.18s ease-out;
+    z-index: 1000;
+}
+
+
+@keyframes attachmentMenuIn {
+    from {
+        opacity: 0;
+        transform: translateY(6px) scale(0.97);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+
+/* ============================================================
+   ATTACHMENT MENU ITEM
+   ============================================================ */
+
+.attachment-menu-item {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px;
+    border: 0;
+    border-radius: 10px;
+    background: transparent;
+    color: #f8fafc;
+    text-align: left;
+    cursor: pointer;
+    transition: background 0.18s ease, transform 0.18s ease;
+}
+
+
+.attachment-menu-item:hover {
+    background: rgba(255, 255, 255, 0.07);
+    transform: translateX(2px);
+}
+
+
+/* ============================================================
+   ATTACHMENT ICON
+   ============================================================ */
+
+.attachment-menu-icon {
+    width: 34px;
+    height: 34px;
+    flex: 0 0 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9px;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+
+.document-icon {
+    background: linear-gradient(145deg, #ef4444, #b91c1c);
+    color: white;
+}
+
+
+.image-icon {
+    background: linear-gradient(145deg, #6366f1, #4338ca);
+    color: white;
+}
+
+
+/* ============================================================
+   ATTACHMENT TEXT
+   ============================================================ */
+
+.attachment-menu-text {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    min-width: 0;
+}
+
+
+.attachment-menu-text strong {
+    font-size: 12px;
+    font-weight: 700;
+    color: #f8fafc;
+}
+
+
+.attachment-menu-text small {
+    font-size: 10px;
+    color: #94a3b8;
+}
+
+
+/* ============================================================
+   SELECTED PDF & IMAGE AREA
+   ============================================================ */
+
+.selected-pdfs,
+.selected-images {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 2px 2px 8px;
+}
+
+
+.selected-pdf-card,
+.selected-image-card {
+    position: relative;
+    width: 240px;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 6px 8px;
+    background: rgba(15, 23, 42, 0.72);
+    border: 1px solid rgba(148, 163, 184, 0.14);
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.18);
+}
+
+
+.selected-pdf-icon {
+    width: 30px;
+    height: 30px;
+    flex: 0 0 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    background: linear-gradient(145deg, #ef4444, #b91c1c);
+    color: white;
+    font-size: 8px;
+    font-weight: 800;
+}
+
+
+.selected-pdf-details,
+.selected-image-details {
+    flex: 1;
+    min-width: 0;
+}
+
+
+.selected-pdf-name,
+.selected-image-name {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: #f1f5f9;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+
+.selected-pdf-status,
+.selected-image-status {
+    margin-top: 1px;
+    color: #94a3b8;
+    font-size: 10px;
+}
+
+
+.selected-image-preview-wrap {
+    position: relative;
+    width: 34px;
+    height: 34px;
+    flex: 0 0 34px;
+    overflow: hidden;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.04);
+}
+
+
+.selected-image-preview {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+
+.image-upload-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(15, 23, 42, 0.58);
+}
+
+
+.image-upload-overlay span {
+    width: 13px;
+    height: 13px;
+    border: 2px solid rgba(255, 255, 255, 0.35);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: uploadSpin 0.8s linear infinite;
+}
+
+
+@keyframes uploadSpin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* ============================================================
+   REMOVE BUTTONS
+   ============================================================ */
+
+.remove-pdf-btn,
+.remove-image-btn {
+    width: 20px;
+    height: 20px;
+    flex: 0 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.05);
+    color: #94a3b8;
+    font-size: 13px;
+    cursor: pointer;
+    transition: background 0.18s ease, color 0.18s ease;
+}
+
+
+.remove-pdf-btn:hover,
+.remove-image-btn:hover {
+    background: rgba(239, 68, 68, 0.15);
+    color: #f87171;
+}
+
+
+/* ============================================================
+   AI TOOLS & FLOATING GARUDA
+   ============================================================ */
+
+.ai-tools-wrapper {
+    position: relative;
+    flex: 0 0 auto;
+}
+
+
+.composer-ai-btn.active {
+    background: rgba(99, 102, 241, 0.18);
+    border-color: rgba(99, 102, 241, 0.42);
+}
+
+
+.composer-garuda-floating-btn {
+    font-size: 15px;
+}
+
+
+.garuda-floating-enabled {
+    background: rgba(251, 146, 60, 0.14);
+    border-color: rgba(251, 146, 60, 0.42);
+    box-shadow: 0 0 14px rgba(251, 146, 60, 0.12);
+}
+
+
+/* ============================================================
+   MESSAGE INPUT (Auto-Growing & Scrollbar Support)
+   ============================================================ */
+
+.composer-message-input {
+    flex: 1;
+    min-width: 60px;
+    min-height: 32px;
+    max-height: 180px; /* Expanded max height for comfortable reading */
+    height: auto;
+    padding: 6px 8px;
+    resize: none;
+    overflow-y: auto !important; /* Forces scrollbar when content exceeds max height */
+    border: 0 !important;
+    outline: none !important;
+    box-shadow: none !important;
+    background: transparent;
+    color: #f8fafc;
+    font-family: inherit;
+    font-size: 14px;
+    line-height: 1.45;
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+}
+
+
+.composer-message-input::placeholder {
+    color: #7f8da3;
+}
+
+
+.composer-message-input:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+
+/* ============================================================
+   SEND BUTTON
+   ============================================================ */
+
+.composer-send-btn {
+    width: 36px;
+    height: 36px;
+    flex: 0 0 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(45, 212, 191, 0.28);
+    border-radius: 50%;
+    background: linear-gradient(145deg, #dbeafe, #ccfbf1);
+    color: #0f172a;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.22);
+    transition:
+        transform 0.18s ease,
+        box-shadow 0.18s ease,
+        border-color 0.18s ease,
+        opacity 0.18s ease;
+}
+
+
+.composer-send-btn:hover:not(:disabled) {
+    transform: translateY(-1px);
+    border-color: rgba(45, 212, 191, 0.65);
+    box-shadow:
+        0 6px 16px rgba(0, 0, 0, 0.25),
+        0 0 12px rgba(45, 212, 191, 0.12);
+}
+
+
+.composer-send-btn:active:not(:disabled) {
+    transform: scale(0.94);
+}
+
+
+.composer-send-btn:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+
+.send-arrow {
+    font-size: 19px;
+    font-weight: 700;
+    line-height: 1;
+    transform: translateY(-1px);
+}
+
+
+/* ============================================================
+   STOP BUTTON
+   ============================================================ */
+
+.composer-stop-btn {
+    background: rgba(30, 41, 59, 0.95);
+    border: 1px solid rgba(248, 113, 113, 0.28);
+    color: #f87171;
+}
+
+
+.stop-square {
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+    background: currentColor;
+}
+
+
+/* ============================================================
+   FOCUS CLEANUP & APPEARANCE
+   ============================================================ */
+
+.garuda-composer button:focus,
+.garuda-composer button:focus-visible,
+.garuda-composer textarea:focus,
+.garuda-composer textarea:focus-visible {
+    outline: none !important;
+}
+
+.garuda-composer textarea {
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+
+/* ============================================================
+   COMPACT COMPOSER ACTION BUTTONS
+   ============================================================ */
+
+.composer-attach-btn,
+.composer-input-row > button:not(
+    .composer-attach-btn
+):not(
+    .composer-ai-btn
+):not(
+    .composer-garuda-floating-btn
+):not(
+    .composer-send-btn
+):not(
+    .composer-stop-btn
+),
+.composer-garuda-floating-btn,
+.composer-ai-btn {
+    width: 34px !important;
+    height: 34px !important;
+    min-width: 34px !important;
+    min-height: 34px !important;
+    max-width: 34px !important;
+    max-height: 34px !important;
+    flex: 0 0 34px;
+    border-radius: 10px;
+    padding: 0 !important;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+
+.composer-attach-btn {
+    font-size: 18px !important;
+}
+
+
+.composer-input-row > button:not(
+    .composer-attach-btn
+):not(
+    .composer-ai-btn
+):not(
+    .composer-garuda-floating-btn
+):not(
+    .composer-send-btn
+):not(
+    .composer-stop-btn
+) {
+    font-size: 17px !important;
+}
+
+
+.composer-garuda-floating-btn {
+    font-size: 19px !important;
+}
+
+
+.composer-ai-btn {
+    font-size: 18px !important;
+}
+
+
+.composer-attach-btn:hover,
+.composer-ai-btn:hover,
+.composer-garuda-floating-btn:hover,
+.composer-input-row > button:not(
+    .composer-attach-btn
+):not(
+    .composer-ai-btn
+):not(
+    .composer-garuda-floating-btn
+):not(
+    .composer-send-btn
+):not(
+    .composer-stop-btn
+):hover {
+    transform: translateY(-1px) scale(1.04);
+}
+
+
+.composer-attach-btn:active,
+.composer-ai-btn:active,
+.composer-garuda-floating-btn:active,
+.composer-input-row > button:not(
+    .composer-attach-btn
+):not(
+    .composer-ai-btn
+):not(
+    .composer-garuda-floating-btn
+):not(
+    .composer-send-btn
+):not(
+    .composer-stop-btn
+):active {
+    transform: scale(0.94);
+}
+
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 900px) {
+    .input-bar {
+        padding: 6px 12px 10px;
+    }
+    .garuda-composer {
+        border-radius: 16px;
+    }
+    .selected-pdf-card,
+    .selected-image-card {
+        width: 100%;
+    }
+}
+
+
+@media (max-width: 600px) {
+    .input-bar {
+        padding: 4px 8px 8px;
+    }
+    .garuda-composer {
+        padding: 5px;
+        border-radius: 14px;
+    }
+    .composer-input-row {
+        gap: 4px;
+    }
+    .composer-icon-btn {
+        width: 32px;
+        height: 32px;
+        flex-basis: 32px;
+        border-radius: 9px;
+    }
+    .composer-send-btn {
+        width: 34px;
+        height: 34px;
+        flex-basis: 34px;
+        border-radius: 9px;
+    }
+    .composer-message-input {
+        font-size: 13px;
+    }
+    .attachment-menu {
+        width: 230px;
+    }
+    .selected-pdf-card,
+    .selected-image-card {
+        width: 100%;
+    }
+}

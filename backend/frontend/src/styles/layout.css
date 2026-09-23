@@ -1,0 +1,302 @@
+/* =========================================================
+   GARUDA AI
+   GLOBAL LAYOUT + ADVANCED THEME SYSTEM
+   ========================================================= */
+
+:root {
+    --bg-primary: #0F172A;
+    --bg-secondary: #111827;
+    --bg-tertiary: #1F2937;
+    --bg-hover: #273449;
+    --bg-active: #1E293B;
+
+    --border-primary: #293548;
+    --border-secondary: #374151;
+
+    --text-primary: #F9FAFB;
+    --text-secondary: #D1D5DB;
+    --text-muted: #9CA3AF;
+    --text-subtle: #6B7280;
+
+    --accent-primary: #2563EB;
+    --accent-secondary: #7C3AED;
+    --accent-hover: #1D4ED8;
+
+    --success-bg: #14532D;
+    --success-text: #86EFAC;
+    --danger-bg: #7F1D1D;
+    --danger-text: #FCA5A5;
+
+    --input-bg: #111827;
+
+    --scrollbar-track: #111827;
+    --scrollbar-thumb: #374151;
+    --scrollbar-thumb-hover: #4B5563;
+
+    --shadow-small: 0 2px 8px rgba(0, 0, 0, 0.12);
+    --shadow-medium: 0 8px 25px rgba(0, 0, 0, 0.18);
+    --shadow-large: 0 15px 40px rgba(0, 0, 0, 0.25);
+}
+
+html[data-theme="light"] {
+    --bg-primary: #F8FAFC;
+    --bg-secondary: #FFFFFF;
+    --bg-tertiary: #F1F5F9;
+    --bg-hover: #E2E8F0;
+    --bg-active: #DBEAFE;
+
+    --border-primary: #E2E8F0;
+    --border-secondary: #CBD5E1;
+
+    --text-primary: #0F172A;
+    --text-secondary: #334155;
+    --text-muted: #64748B;
+    --text-subtle: #94A3B8;
+
+    --accent-primary: #2563EB;
+    --accent-secondary: #7C3AED;
+    --accent-hover: #1D4ED8;
+
+    --success-bg: #DCFCE7;
+    --success-text: #166534;
+    --danger-bg: #FEE2E2;
+    --danger-text: #B91C1C;
+
+    --input-bg: #FFFFFF;
+
+    --scrollbar-track: #F1F5F9;
+    --scrollbar-thumb: #CBD5E1;
+    --scrollbar-thumb-hover: #94A3B8;
+
+    --shadow-small: 0 2px 8px rgba(15, 23, 42, 0.06);
+    --shadow-medium: 0 8px 25px rgba(15, 23, 42, 0.08);
+    --shadow-large: 0 15px 40px rgba(15, 23, 42, 0.12);
+}
+
+/* Accent presets */
+html[data-accent="blue"] {
+    --accent-primary: #2563EB;
+    --accent-hover: #1D4ED8;
+}
+
+html[data-accent="purple"] {
+    --accent-primary: #7C3AED;
+    --accent-hover: #6D28D9;
+}
+
+html[data-accent="green"] {
+    --accent-primary: #16A34A;
+    --accent-hover: #15803D;
+}
+
+html[data-accent="orange"] {
+    --accent-primary: #EA580C;
+    --accent-hover: #C2410C;
+}
+
+html[data-accent="red"] {
+    --accent-primary: #DC2626;
+    --accent-hover: #B91C1C;
+}
+
+/* Text size presets */
+html[data-text-size="small"] { font-size: 14px; }
+html[data-text-size="medium"] { font-size: 16px; }
+html[data-text-size="large"] { font-size: 18px; }
+
+/* Density variables for components that opt in */
+html[data-chat-density="compact"] {
+    --chat-message-gap: 8px;
+    --chat-message-padding: 12px;
+}
+
+html[data-chat-density="comfortable"] {
+    --chat-message-gap: 14px;
+    --chat-message-padding: 16px;
+}
+
+html[data-chat-density="spacious"] {
+    --chat-message-gap: 22px;
+    --chat-message-padding: 20px;
+}
+
+/* Accessibility */
+html[data-high-contrast="true"] {
+    --border-primary: #64748B;
+    --border-secondary: #475569;
+    --text-secondary: var(--text-primary);
+    --text-muted: var(--text-secondary);
+}
+
+html[data-reduced-motion="true"] *,
+html[data-reduced-motion="true"] *::before,
+html[data-reduced-motion="true"] *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    margin: 0;
+    overflow: hidden;
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+#root {
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    overflow: hidden;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+.layout {
+    width: 100vw;
+    height: 100vh;
+    min-width: 0;
+    min-height: 0;
+    display: flex;
+    overflow: hidden;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+.main {
+    flex: 1 1 auto;
+    width: 0;
+    height: 100%;
+    min-width: 0;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+button,
+input,
+textarea,
+select {
+    font-family: inherit;
+}
+
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+    outline: 2px solid var(--accent-primary);
+    outline-offset: 2px;
+}
+
+::selection {
+    background: var(--accent-primary);
+    color: #FFFFFF;
+}
+
+* {
+    scrollbar-width: thin;
+    scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+}
+
+*::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+*::-webkit-scrollbar-track {
+    background: var(--scrollbar-track);
+}
+
+*::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb);
+    border-radius: 10px;
+    border: 2px solid var(--scrollbar-track);
+}
+
+*::-webkit-scrollbar-thumb:hover {
+    background: var(--scrollbar-thumb-hover);
+}
+
+.garuda-card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-primary);
+    border-radius: 16px;
+    color: var(--text-primary);
+    box-shadow: var(--shadow-small);
+    transition:
+        background-color 0.25s ease,
+        border-color 0.25s ease,
+        color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.text-primary { color: var(--text-primary); }
+.text-secondary { color: var(--text-secondary); }
+.text-muted { color: var(--text-muted); }
+.text-subtle { color: var(--text-subtle); }
+
+.garuda-accent {
+    background: linear-gradient(
+        135deg,
+        var(--accent-primary),
+        var(--accent-secondary)
+    );
+    color: #FFFFFF;
+}
+
+@media (max-width: 900px) {
+    .layout { width: 100%; }
+}
+
+@media (max-width: 600px) {
+    .main { width: 100%; }
+}
+/* =========================================================
+   GARUDA CHAT LAYOUT POLISH
+   ========================================================= */
+
+.main {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    min-height: 0;
+    height: 100%;
+    overflow: hidden;
+}
+
+.main > .chat-window {
+    flex: 1 1 auto;
+    min-height: 0;
+}
+
+.main > .input-bar {
+    flex: 0 0 auto;
+    width: 100%;
+    margin-top: auto;
+}

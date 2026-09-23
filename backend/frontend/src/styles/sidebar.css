@@ -1,0 +1,898 @@
+/* =========================================================
+   GARUDA AI
+   SIDEBAR
+   ========================================================= */
+
+
+/* =========================================================
+   SIDEBAR
+   ========================================================= */
+
+.sidebar {
+
+    width: 270px;
+
+    height: 100vh;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    padding: 20px 14px;
+
+    background:
+        var(--bg-secondary);
+
+    border-right:
+        1px solid
+        var(--border-primary);
+
+    color:
+        var(--text-primary);
+
+    overflow: hidden;
+
+    transition:
+        background-color 0.25s ease,
+        border-color 0.25s ease,
+        color 0.25s ease;
+
+}
+
+
+/* =========================================================
+   LOGO
+   ========================================================= */
+
+.logo {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 11px;
+
+    padding:
+        4px 8px 20px;
+
+    color:
+        var(--text-primary);
+
+}
+
+
+.logo-icon {
+
+    width: 38px;
+
+    height: 38px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 11px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--accent-primary),
+            var(--accent-secondary)
+        );
+
+    font-size: 23px;
+
+    box-shadow:
+        var(--shadow-small);
+
+}
+
+
+.logo-text {
+
+    font-size: 20px;
+
+    font-weight: 700;
+
+    color:
+        var(--text-primary);
+
+}
+
+
+/* =========================================================
+   NEW CHAT
+   IMPORTANT:
+   JSX uses className="new-chat"
+   ========================================================= */
+
+.new-chat {
+
+    width: 100%;
+
+    min-height: 46px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 9px;
+
+    padding:
+        11px 14px;
+
+    margin-bottom: 20px;
+
+    border:
+        1px solid
+        var(--border-secondary);
+
+    border-radius: 11px;
+
+    background:
+        var(--bg-tertiary);
+
+    color:
+        var(--text-primary);
+
+    font-family:
+        inherit;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    appearance: none;
+
+    -webkit-appearance: none;
+
+    outline: none;
+
+    box-shadow: none;
+
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.15s ease,
+        box-shadow 0.2s ease;
+
+}
+
+
+.new-chat:hover {
+
+    background:
+        var(--bg-hover);
+
+    border-color:
+        var(--accent-primary);
+
+    box-shadow:
+        var(--shadow-small);
+
+    transform:
+        translateY(-1px);
+
+}
+
+
+.new-chat:active {
+
+    transform:
+        translateY(0)
+        scale(0.98);
+
+}
+
+
+.new-chat-icon {
+
+    font-size: 20px;
+
+    line-height: 1;
+
+    color:
+        var(--text-primary);
+
+}
+
+
+/* =========================================================
+   CHAT SECTION
+   ========================================================= */
+
+.chat-section {
+
+    flex: 1;
+
+    min-height: 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    overflow: hidden;
+
+}
+
+
+.chat-section-header {
+
+    padding:
+        0 8px 10px;
+
+}
+
+
+.chat-section-header h4 {
+
+    margin: 0;
+
+    color:
+        var(--text-muted);
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    text-transform: uppercase;
+
+    letter-spacing:
+        0.8px;
+
+}
+
+
+/* =========================================================
+   CHAT LIST
+   ========================================================= */
+
+.chat-list {
+
+    flex: 1;
+
+    min-height: 0;
+
+    overflow-y: auto;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 5px;
+
+    padding-right: 3px;
+
+}
+
+
+/* =========================================================
+   CHAT ITEM
+   ========================================================= */
+
+.chat-item {
+
+    width: 100%;
+
+    min-height: 45px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    padding:
+        9px 10px;
+
+    border:
+        1px solid
+        transparent;
+
+    border-radius: 10px;
+
+    background:
+        transparent;
+
+    color:
+        var(--text-secondary);
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.18s ease,
+        border-color 0.18s ease,
+        color 0.18s ease;
+
+}
+
+
+.chat-item:hover {
+
+    background:
+        var(--bg-hover);
+
+    color:
+        var(--text-primary);
+
+}
+
+
+.chat-item.active {
+
+    background:
+        var(--bg-active);
+
+    border-color:
+        var(--border-primary);
+
+    color:
+        var(--text-primary);
+
+}
+
+
+/* =========================================================
+   CHAT CONTENT
+   ========================================================= */
+
+.chat-content {
+
+    min-width: 0;
+
+    flex: 1;
+
+}
+
+
+.chat-title {
+
+    min-width: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+}
+
+
+.chat-title-icon {
+
+    flex-shrink: 0;
+
+    font-size: 13px;
+
+}
+
+
+.chat-title-text {
+
+    min-width: 0;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+
+    color:
+        inherit;
+
+    font-size: 13px;
+
+}
+
+
+/* =========================================================
+   CHAT ACTIONS
+   ========================================================= */
+
+.chat-actions {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 3px;
+
+    flex-shrink: 0;
+
+}
+
+
+.rename-btn,
+.delete-btn {
+
+    width: 28px;
+
+    height: 28px;
+
+    padding: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border:
+        1px solid
+        transparent;
+
+    border-radius: 7px;
+
+    background:
+        transparent;
+
+    color:
+        var(--text-muted);
+
+    font-family:
+        inherit;
+
+    cursor: pointer;
+
+    appearance: none;
+
+    -webkit-appearance: none;
+
+    outline: none;
+
+}
+
+
+.rename-btn:hover {
+
+    background:
+        var(--bg-hover);
+
+    color:
+        var(--accent-primary);
+
+}
+
+
+.delete-btn:hover {
+
+    background:
+        var(--danger-bg);
+
+    color:
+        var(--danger-text);
+
+}
+
+
+/* =========================================================
+   RENAME INPUT
+   ========================================================= */
+
+.rename-input {
+
+    width: 100%;
+
+    min-width: 0;
+
+    padding:
+        5px 7px;
+
+    border:
+        1px solid
+        var(--accent-primary);
+
+    border-radius: 7px;
+
+    background:
+        var(--input-bg);
+
+    color:
+        var(--text-primary);
+
+    font-family:
+        inherit;
+
+    font-size: 13px;
+
+    outline: none;
+
+}
+
+
+/* =========================================================
+   EMPTY CHAT
+   ========================================================= */
+
+.empty-chat {
+
+    padding:
+        30px 15px;
+
+    text-align: center;
+
+}
+
+
+.empty-chat-icon {
+
+    margin-bottom: 10px;
+
+    font-size: 25px;
+
+}
+
+
+.empty-chat-title {
+
+    color:
+        var(--text-primary);
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+}
+
+
+.empty-chat-description {
+
+    margin-top: 5px;
+
+    color:
+        var(--text-muted);
+
+    font-size: 11px;
+
+    line-height: 1.5;
+
+}
+
+
+/* =========================================================
+   GUEST CHAT
+   ========================================================= */
+
+.guest-chat-message {
+
+    padding:
+        24px 15px;
+
+    text-align: center;
+
+}
+
+
+.guest-chat-icon {
+
+    margin-bottom: 10px;
+
+    font-size: 24px;
+
+}
+
+
+.guest-chat-title {
+
+    color:
+        var(--text-primary);
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+}
+
+
+.guest-chat-description {
+
+    margin-top: 6px;
+
+    color:
+        var(--text-muted);
+
+    font-size: 11px;
+
+    line-height: 1.5;
+
+}
+
+
+.guest-login-btn {
+
+    margin-top: 14px;
+
+    padding:
+        8px 18px;
+
+    border:
+        1px solid
+        var(--accent-primary);
+
+    border-radius: 8px;
+
+    background:
+        var(--accent-primary);
+
+    color:
+        #FFFFFF;
+
+    font-family:
+        inherit;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    appearance: none;
+
+    -webkit-appearance: none;
+
+    transition:
+        background-color 0.2s ease,
+        transform 0.15s ease;
+
+}
+
+
+.guest-login-btn:hover {
+
+    background:
+        var(--accent-hover);
+
+    transform:
+        translateY(-1px);
+
+}
+
+
+/* =========================================================
+   SIDEBAR BOTTOM
+   ========================================================= */
+
+.bottom {
+
+    flex-shrink: 0;
+
+    padding-top: 12px;
+
+    border-top:
+        1px solid
+        var(--border-primary);
+
+}
+
+
+/* =========================================================
+   GUEST STATUS
+   ========================================================= */
+
+.guest-status {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    padding:
+        7px 9px 10px;
+
+    color:
+        var(--text-muted);
+
+    font-size: 11px;
+
+}
+
+
+.guest-status-dot {
+
+    width: 7px;
+
+    height: 7px;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background:
+        #22C55E;
+
+    box-shadow:
+        0 0 6px
+        rgba(
+            34,
+            197,
+            94,
+            0.6
+        );
+
+}
+
+
+/* =========================================================
+   SETTINGS
+   IMPORTANT:
+   JSX uses className="settings"
+   ========================================================= */
+
+.settings {
+
+    width: 100%;
+
+    min-height: 44px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding:
+        10px 12px;
+
+    border:
+        1px solid
+        transparent;
+
+    border-radius: 10px;
+
+    background:
+        transparent;
+
+    color:
+        var(--text-secondary);
+
+    font-family:
+        inherit;
+
+    font-size: 13px;
+
+    font-weight: 500;
+
+    cursor: pointer;
+
+    appearance: none;
+
+    -webkit-appearance: none;
+
+    outline: none;
+
+    box-shadow: none;
+
+    text-align: left;
+
+    transition:
+        background-color 0.18s ease,
+        border-color 0.18s ease,
+        color 0.18s ease;
+
+}
+
+
+.settings:hover {
+
+    background:
+        var(--bg-hover);
+
+    border-color:
+        var(--border-primary);
+
+    color:
+        var(--text-primary);
+
+}
+
+
+.settings:active {
+
+    transform:
+        scale(0.99);
+
+}
+
+
+.settings-icon {
+
+    width: 25px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 18px;
+
+}
+
+
+/* =========================================================
+   SCROLLBAR
+   ========================================================= */
+
+.chat-list::-webkit-scrollbar {
+
+    width:
+        6px;
+
+}
+
+
+.chat-list::-webkit-scrollbar-track {
+
+    background:
+        transparent;
+
+}
+
+
+.chat-list::-webkit-scrollbar-thumb {
+
+    background:
+        var(--scrollbar-thumb);
+
+    border-radius:
+        10px;
+
+}
+
+
+.chat-list::-webkit-scrollbar-thumb:hover {
+
+    background:
+        var(--scrollbar-thumb-hover);
+
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+    .sidebar {
+
+        width:
+            230px;
+
+        padding:
+            16px 10px;
+
+    }
+
+
+    .logo-text {
+
+        font-size:
+            18px;
+
+    }
+
+}
+
+
+@media (max-width: 550px) {
+
+    .sidebar {
+
+        width:
+            210px;
+
+    }
+
+}

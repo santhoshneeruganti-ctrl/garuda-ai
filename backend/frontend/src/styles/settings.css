@@ -1,0 +1,1301 @@
+/* =========================================================
+   GARUDA AI
+   SETTINGS PAGE
+   DARK + LIGHT THEME
+   ========================================================= */
+
+
+/* =========================================================
+   SETTINGS PAGE
+   ========================================================= */
+
+.settings-page {
+
+    width: 100%;
+
+    height: 100%;
+
+    flex: 1;
+
+    min-width: 0;
+
+    min-height: 0;
+
+    padding: 40px;
+
+    box-sizing: border-box;
+
+    overflow-y: auto;
+
+    overflow-x: hidden;
+
+    background:
+        var(--bg-primary);
+
+    color:
+        var(--text-primary);
+
+    transition:
+        background-color 0.25s ease,
+        color 0.25s ease;
+
+    scrollbar-width: thin;
+
+    scrollbar-color:
+        var(--border-secondary)
+        transparent;
+
+}
+
+
+/* =========================================================
+   SETTINGS PAGE SCROLLBAR
+   ========================================================= */
+
+.settings-page::-webkit-scrollbar {
+
+    width: 9px;
+
+}
+
+
+.settings-page::-webkit-scrollbar-track {
+
+    background:
+        transparent;
+
+}
+
+
+.settings-page::-webkit-scrollbar-thumb {
+
+    background:
+        var(--border-secondary);
+
+    border-radius: 10px;
+
+    border:
+        2px solid
+        transparent;
+
+    background-clip:
+        padding-box;
+
+}
+
+
+.settings-page::-webkit-scrollbar-thumb:hover {
+
+    background:
+        var(--text-muted);
+
+    border:
+        2px solid
+        transparent;
+
+    background-clip:
+        padding-box;
+
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.settings-header {
+
+    width: 100%;
+
+    max-width: 1100px;
+
+    margin:
+        0 auto 32px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 16px;
+
+}
+
+
+/* =========================================================
+   HEADER TEXT
+   ========================================================= */
+
+.settings-header h1 {
+
+    margin: 0;
+
+    color:
+        var(--text-primary);
+
+    font-size: 34px;
+
+    font-weight: 700;
+
+}
+
+
+.settings-header p {
+
+    margin:
+        6px 0 0;
+
+    color:
+        var(--text-muted);
+
+    font-size: 16px;
+
+}
+
+
+/* =========================================================
+   BACK BUTTON
+   ========================================================= */
+
+.back-settings-btn {
+
+    width: 48px;
+
+    height: 48px;
+
+    flex-shrink: 0;
+
+    border:
+        1px solid
+        var(--border-secondary);
+
+    border-radius: 13px;
+
+    background:
+        var(--bg-tertiary);
+
+    color:
+        var(--text-primary);
+
+    font-family:
+        inherit;
+
+    font-size: 22px;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
+
+}
+
+
+.back-settings-btn:hover {
+
+    background:
+        var(--bg-hover);
+
+    border-color:
+        var(--accent-primary);
+
+    transform:
+        translateX(-2px);
+
+}
+
+
+.back-settings-btn:active {
+
+    transform:
+        translateX(-1px)
+        scale(0.98);
+
+}
+
+
+/* =========================================================
+   SETTINGS BODY
+   ========================================================= */
+
+.settings-body {
+
+    width: 100%;
+
+    max-width: 1100px;
+
+    margin:
+        0 auto;
+
+    padding-bottom: 40px;
+
+    display: grid;
+
+    grid-template-columns:
+        360px
+        minmax(0, 1fr);
+
+    gap: 22px;
+
+    align-items: start;
+
+}
+
+
+/* =========================================================
+   LEFT MENU
+   ========================================================= */
+
+.settings-menu {
+
+    min-width: 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+
+}
+
+
+/* =========================================================
+   MENU ITEM
+   ========================================================= */
+
+.settings-menu-item {
+
+    width: 100%;
+
+    min-width: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+    padding: 17px;
+
+    border:
+        1px solid
+        var(--border-primary);
+
+    border-radius: 15px;
+
+    background:
+        var(--bg-secondary);
+
+    color:
+        var(--text-primary);
+
+    font-family:
+        inherit;
+
+    text-align: left;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+
+}
+
+
+.settings-menu-item:hover {
+
+    background:
+        var(--bg-hover);
+
+    border-color:
+        var(--accent-primary);
+
+    transform:
+        translateX(3px);
+
+}
+
+
+.settings-menu-item.active {
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(37, 99, 235, 0.16),
+            rgba(124, 58, 237, 0.14)
+        );
+
+    border-color:
+        var(--accent-primary);
+
+    box-shadow:
+        0 0 20px
+        rgba(
+            37,
+            99,
+            235,
+            0.10
+        );
+
+}
+
+
+/* =========================================================
+   MENU ICON
+   ========================================================= */
+
+.menu-icon {
+
+    width: 46px;
+
+    height: 46px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 12px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--accent-primary),
+            var(--accent-secondary)
+        );
+
+    font-size: 22px;
+
+}
+
+
+/* =========================================================
+   MENU TEXT
+   ========================================================= */
+
+.menu-text {
+
+    min-width: 0;
+
+    flex: 1;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 4px;
+
+}
+
+
+.menu-text strong {
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+
+    color:
+        var(--text-primary);
+
+    font-size: 15px;
+
+}
+
+
+.menu-text small {
+
+    color:
+        var(--text-muted);
+
+    font-size: 12px;
+
+    line-height: 1.4;
+
+}
+
+
+/* =========================================================
+   MENU ARROW
+   ========================================================= */
+
+.menu-arrow {
+
+    flex-shrink: 0;
+
+    color:
+        var(--text-muted);
+
+    font-size: 18px;
+
+    transition:
+        transform 0.2s ease,
+        color 0.2s ease;
+
+}
+
+
+.settings-menu-item:hover
+.menu-arrow {
+
+    color:
+        var(--accent-primary);
+
+    transform:
+        translateX(3px);
+
+}
+
+
+/* =========================================================
+   RIGHT PANEL
+   ========================================================= */
+
+.settings-panel {
+
+    width: 100%;
+
+    min-width: 0;
+
+    border:
+        1px solid
+        var(--border-primary);
+
+    border-radius: 18px;
+
+    background:
+        var(--bg-secondary);
+
+    padding: 28px;
+
+    box-sizing: border-box;
+
+    color:
+        var(--text-primary);
+
+    transition:
+        background-color 0.25s ease,
+        border-color 0.25s ease,
+        color 0.25s ease;
+
+}
+
+
+/* =========================================================
+   CONTENT HEADER
+   ========================================================= */
+
+.settings-content-header {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 16px;
+
+    padding-bottom: 24px;
+
+    margin-bottom: 20px;
+
+    border-bottom:
+        1px solid
+        var(--border-primary);
+
+}
+
+
+/* =========================================================
+   LARGE ICON
+   ========================================================= */
+
+.settings-large-icon {
+
+    width: 58px;
+
+    height: 58px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 15px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--accent-primary),
+            var(--accent-secondary)
+        );
+
+    font-size: 28px;
+
+}
+
+
+/* =========================================================
+   CONTENT HEADER TEXT
+   ========================================================= */
+
+.settings-content-header h2 {
+
+    margin: 0;
+
+    color:
+        var(--text-primary);
+
+    font-size: 24px;
+
+}
+
+
+.settings-content-header p {
+
+    margin:
+        5px 0 0;
+
+    color:
+        var(--text-muted);
+
+    font-size: 14px;
+
+}
+
+
+/* =========================================================
+   OPTION
+   ========================================================= */
+
+.settings-option {
+
+    width: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding: 18px;
+
+    margin-bottom: 12px;
+
+    box-sizing: border-box;
+
+    border-radius: 13px;
+
+    background:
+        var(--bg-tertiary);
+
+    border:
+        1px solid
+        transparent;
+
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease;
+
+}
+
+
+.settings-option:hover {
+
+    border-color:
+        var(--border-primary);
+
+}
+
+
+.settings-option h3,
+.settings-option-column h3 {
+
+    margin: 0;
+
+    color:
+        var(--text-primary);
+
+    font-size: 15px;
+
+}
+
+
+.settings-option p,
+.settings-option-column p {
+
+    margin:
+        5px 0 0;
+
+    color:
+        var(--text-muted);
+
+    font-size: 13px;
+
+    line-height: 1.5;
+
+}
+
+
+/* =========================================================
+   OPTION COLUMN
+   ========================================================= */
+
+.settings-option-column {
+
+    padding: 18px;
+
+    margin-bottom: 12px;
+
+    border-radius: 13px;
+
+    background:
+        var(--bg-tertiary);
+
+    border:
+        1px solid
+        transparent;
+
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease;
+
+}
+
+
+.settings-option-column:hover {
+
+    border-color:
+        var(--border-primary);
+
+}
+
+
+/* =========================================================
+   STATUS BADGE
+   ========================================================= */
+
+.status-badge {
+
+    flex-shrink: 0;
+
+    padding:
+        7px 12px;
+
+    border-radius: 20px;
+
+    background:
+        var(--bg-hover);
+
+    color:
+        var(--text-secondary);
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+}
+
+
+.status-badge.success {
+
+    background:
+        var(--success-bg);
+
+    color:
+        var(--success-text);
+
+}
+
+
+/* =========================================================
+   ACTION BUTTON
+   ========================================================= */
+
+.settings-action-btn {
+
+    flex-shrink: 0;
+
+    padding:
+        9px 15px;
+
+    border:
+        1px solid
+        var(--accent-primary);
+
+    border-radius: 9px;
+
+    background:
+        var(--accent-primary);
+
+    color:
+        #ffffff;
+
+    font-family:
+        inherit;
+
+    cursor: pointer;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    transition:
+        background-color 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+
+}
+
+
+.settings-action-btn:hover {
+
+    background:
+        var(--accent-hover);
+
+    transform:
+        translateY(-1px);
+
+    box-shadow:
+        var(--shadow-small);
+
+}
+
+
+/* =========================================================
+   TOGGLE
+   ========================================================= */
+
+.toggle {
+
+    width: 52px;
+
+    height: 29px;
+
+    flex-shrink: 0;
+
+    padding: 3px;
+
+    border:
+        none;
+
+    border-radius: 20px;
+
+    background:
+        var(--border-secondary);
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease;
+
+}
+
+
+.toggle span {
+
+    display: block;
+
+    width: 23px;
+
+    height: 23px;
+
+    border-radius: 50%;
+
+    background:
+        var(--text-muted);
+
+    transition:
+        transform 0.2s ease,
+        background-color 0.2s ease;
+
+}
+
+
+.toggle.active {
+
+    background:
+        var(--accent-primary);
+
+}
+
+
+.toggle.active span {
+
+    transform:
+        translateX(23px);
+
+    background:
+        #ffffff;
+
+}
+
+
+/* =========================================================
+   RESPONSE STYLE OPTIONS
+   ========================================================= */
+
+.response-style-options {
+
+    display: flex;
+
+    gap: 10px;
+
+    margin-top: 16px;
+
+    flex-wrap: wrap;
+
+}
+
+
+/* =========================================================
+   STYLE BUTTON
+   ========================================================= */
+
+.style-btn {
+
+    padding:
+        10px 17px;
+
+    border:
+        1px solid
+        var(--border-secondary);
+
+    border-radius: 10px;
+
+    background:
+        var(--bg-secondary);
+
+    color:
+        var(--text-secondary);
+
+    font-family:
+        inherit;
+
+    cursor: pointer;
+
+    font-size: 13px;
+
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
+
+}
+
+
+.style-btn:hover {
+
+    border-color:
+        var(--accent-primary);
+
+    color:
+        var(--text-primary);
+
+    transform:
+        translateY(-1px);
+
+}
+
+
+.style-btn.selected {
+
+    background:
+        var(--accent-primary);
+
+    border-color:
+        var(--accent-primary);
+
+    color:
+        #ffffff;
+
+}
+
+
+/* =========================================================
+   ABOUT
+   ========================================================= */
+
+.about-card {
+
+    padding: 30px;
+
+    text-align: center;
+
+    border-radius: 15px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--bg-tertiary),
+            var(--bg-secondary)
+        );
+
+    border:
+        1px solid
+        var(--border-primary);
+
+}
+
+
+.about-logo {
+
+    width: 75px;
+
+    height: 75px;
+
+    margin:
+        0 auto 15px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--accent-primary),
+            var(--accent-secondary)
+        );
+
+    font-size: 38px;
+
+}
+
+
+.about-card h2 {
+
+    margin: 0;
+
+    color:
+        var(--text-primary);
+
+    font-size: 25px;
+
+}
+
+
+.about-card p {
+
+    max-width: 500px;
+
+    margin:
+        10px auto;
+
+    color:
+        var(--text-muted);
+
+    line-height: 1.6;
+
+}
+
+
+.version {
+
+    display: inline-block;
+
+    margin-top: 10px;
+
+    padding:
+        6px 12px;
+
+    border-radius: 20px;
+
+    background:
+        var(--bg-hover);
+
+    color:
+        var(--text-secondary);
+
+    font-size: 12px;
+
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 850px) {
+
+    .settings-page {
+
+        padding: 25px;
+
+    }
+
+
+    .settings-body {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+
+    .settings-menu {
+
+        display: grid;
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .settings-page {
+
+        padding: 15px;
+
+    }
+
+
+    .settings-menu {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+
+    .settings-header h1 {
+
+        font-size: 27px;
+
+    }
+
+
+    .settings-panel {
+
+        padding: 18px;
+
+    }
+
+
+    .settings-option {
+
+        align-items:
+            flex-start;
+
+    }
+
+
+    .settings-content-header {
+
+        align-items:
+            flex-start;
+
+    }
+
+}
+
+/* =========================================================
+   ADVANCED APPEARANCE CONTROLS
+   ========================================================= */
+
+.appearance-group {
+    margin-bottom: 14px;
+}
+
+.theme-mode-options {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+    margin-top: 16px;
+}
+
+.theme-mode-btn {
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px;
+    border: 1px solid var(--border-secondary);
+    border-radius: 12px;
+    background: var(--bg-secondary);
+    color: var(--text-secondary);
+    font-family: inherit;
+    text-align: left;
+    cursor: pointer;
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.theme-mode-btn:hover {
+    border-color: var(--accent-primary);
+    transform: translateY(-1px);
+}
+
+.theme-mode-btn.selected {
+    border-color: var(--accent-primary);
+    background: var(--bg-active);
+    color: var(--text-primary);
+    box-shadow: var(--shadow-small);
+}
+
+.theme-mode-icon {
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background: var(--bg-tertiary);
+    font-size: 18px;
+}
+
+.theme-mode-text {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.theme-mode-text strong {
+    font-size: 13px;
+}
+
+.theme-mode-text small {
+    color: var(--text-muted);
+    font-size: 11px;
+    line-height: 1.35;
+}
+
+.accent-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 16px;
+}
+
+.accent-color-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 12px;
+    border: 1px solid var(--border-secondary);
+    border-radius: 10px;
+    background: var(--bg-secondary);
+    color: var(--text-secondary);
+    font-family: inherit;
+    font-size: 12px;
+    cursor: pointer;
+    transition:
+        border-color 0.2s ease,
+        background-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.accent-color-btn:hover {
+    border-color: var(--accent-primary);
+    transform: translateY(-1px);
+}
+
+.accent-color-btn.selected {
+    border-color: var(--accent-primary);
+    background: var(--bg-active);
+    color: var(--text-primary);
+}
+
+.accent-swatch {
+    width: 18px;
+    height: 18px;
+    display: inline-block;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: var(--swatch-color);
+    box-shadow: 0 0 0 2px var(--bg-secondary);
+}
+
+.segmented-options {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 16px;
+    padding: 5px;
+    border: 1px solid var(--border-primary);
+    border-radius: 12px;
+    background: var(--bg-secondary);
+}
+
+.segment-btn {
+    min-width: 92px;
+    padding: 9px 14px;
+    border: none;
+    border-radius: 8px;
+    background: transparent;
+    color: var(--text-muted);
+    font-family: inherit;
+    font-size: 12px;
+    cursor: pointer;
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease;
+}
+
+.segment-btn:hover {
+    color: var(--text-primary);
+}
+
+.segment-btn.selected {
+    background: var(--accent-primary);
+    color: #FFFFFF;
+}
+
+.nested-option {
+    margin-top: 14px;
+    margin-bottom: 0;
+}
+
+.appearance-summary {
+    margin-top: 2px;
+}
+
+@media (max-width: 850px) {
+
+    .theme-mode-options {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    .accent-options {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .segmented-options {
+        width: 100%;
+    }
+
+    .segment-btn {
+        flex: 1 1 30%;
+        min-width: 0;
+    }
+
+}
