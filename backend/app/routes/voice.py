@@ -1,8 +1,7 @@
 from fastapi import APIRouter, UploadFile, File, HTTPException
-from faster_whisper import WhisperModel
 
-import tempfile
 import os
+import tempfile
 
 
 router = APIRouter(
@@ -11,43 +10,107 @@ router = APIRouter(
 )
 
 
-# ======================================================
+# ============================================================
+# WHISPER CONFIGURATION
+# ============================================================
+
+# Default is OFF.
+#
+# Why?
+# Render free/512 MB RAM instances should not load the
+# Whisper model during FastAPI startup.
+#
+# To enable Whisper later:
+#
+# GARUDA_ENABLE_WHISPER=true
+#
+ENABLE_WHISPER = (
+    os.getenv("GARUDA_ENABLE_WHISPER", "false").lower()
+    == "true"
+)
+
+
+# ============================================================
 # WHISPER MODEL
-# ======================================================
+# ============================================================
 
-print(
-    "🦅 Loading Garuda Whisper model..."
-)
+model = None
 
 
-model = WhisperModel(
-    "base.en",
-    device="cpu",
-    compute_type="int8",
-)
+def get_whisper_model():
+    """
+    Load Whisper only when explicitly enabled.
+
+    This prevents the Whisper model from consuming RAM
+    during normal FastAPI startup.
+    """
+
+    global model
+
+    if not ENABLE_WHISPER:
+        return None
+
+    if model is not None:
+        return model
+
+    try:
+        print("🦅 Loading Garuda Whisper model...")
+
+        from faster_whisper import WhisperModel
+
+        model = WhisperModel(
+            "base.en",
+            device="cpu",
+            compute_type="int8",
+        )
+
+        print("✅ Garuda Whisper model loaded successfully")
+
+        return model
+
+    except Exception as error:
+
+        print(
+            "❌ Failed to load Whisper model:",
+            error
+        )
+
+        return None
 
 
-print(
-    "✅ Garuda Whisper model loaded successfully"
-)
-
-
-# ======================================================
+# ============================================================
 # TRANSCRIBE VOICE
-# ======================================================
+# ============================================================
 
 @router.post("/transcribe")
 async def transcribe_voice(
     audio: UploadFile = File(...)
 ):
 
+    # ========================================================
+    # WHISPER CHECK
+    # ========================================================
+
+    whisper_model = get_whisper_model()
+
+    if whisper_model is None:
+
+        raise HTTPException(
+            status_code=503,
+            detail=(
+                "Server-side voice transcription is currently "
+                "disabled. Use client-side voice recognition "
+                "or enable GARUDA_ENABLE_WHISPER."
+            ),
+        )
+
     temp_path = None
 
     try:
 
-        # ==================================================
+        # ====================================================
         # VALIDATE FILE
-        # ==================================================
+        # ====================================================
 
         if not audio:
 
@@ -56,11 +119,11 @@ async def transcribe_voice(
                 detail="No audio file received.",
             )
 
-        # ==================================================
+        # ====================================================
         # READ AUDIO
-        # ==================================================
+        # ====================================================
 
-        content =await audio.read()
+        content = await audio.read()
 
         if not content:
 
@@ -73,9 +136,9 @@ async def transcribe_voice(
             f"🎤 Voice received: {len(content)} bytes"
         )
 
-        # ==================================================
+        # ====================================================
         # CREATE TEMP FILE
-        # ==================================================
+        # ====================================================
 
         with tempfile.NamedTemporaryFile(
             delete=False,
@@ -84,77 +147,69 @@ async def transcribe_voice(
 
             temp_path = temp_file.name
 
-            temp_file.write(
-                content
-            )
+            temp_file.write(content)
 
-        # ==================================================
+        # ====================================================
         # TRANSCRIBE
-        # ==================================================
+        # ====================================================
 
-        segments, info =model.transcribe(
+        segments, info = whisper_model.transcribe(
 
-                temp_path,
+            temp_path,
 
-                language="en",
+            language="en",
 
-                beam_size=5,
+            beam_size=5,
 
-                best_of=5,
+            best_of=5,
 
-                temperature=0.0,
+            temperature=0.0,
 
-                condition_on_previous_text=False,
+            condition_on_previous_text=False,
 
-                vad_filter=True,
+            vad_filter=True,
 
-                vad_parameters={
+            vad_parameters={
+                "min_silence_duration_ms": 500,
+                "speech_pad_ms": 250,
+                "min_speech_duration_ms": 200,
+            },
 
-                    "min_silence_duration_ms":
-                        500,
+            initial_prompt=(
 
-                    "speech_pad_ms":
-                        250,
+                "Garuda voice assistant commands. "
 
-                    "min_speech_duration_ms":
-                        200,
-                },
+                "Open YouTube. "
+                "Open Google. "
+                "Open Gmail. "
+                "Open GitHub. "
+                "Open ChatGPT. "
+                "Open WhatsApp. "
+                "Open Wikipedia. "
 
-                initial_prompt=(
+                "Search YouTube. "
+                "Search Google. "
 
-                    "Garuda voice assistant commands. "
+                "Volume up. "
+                "Volume down. "
 
-                    "Open YouTube. "
-                    "Open Google. "
-                    "Open Gmail. "
-                    "Open GitHub. "
-                    "Open ChatGPT. "
-                    "Open WhatsApp. "
-                    "Open Wikipedia. "
+                "Mute. "
+                "Unmute. "
 
-                    "Search YouTube. "
-                    "Search Google. "
+                "Open Calculator. "
+                "Open Notepad. "
+                "Open File Explorer. "
 
-                    "Volume up. "
-                    "Volume down. "
+                "Open Downloads. "
+                "Open Documents. "
+                "Open Desktop. "
+                "Open Pictures."
+            ),
+        )
 
-                    "Mute. "
-                    "Unmute. "
-
-                    "Open Calculator. "
-                    "Open Notepad. "
-                    "Open File Explorer. "
-
-                    "Open Downloads. "
-                    "Open Documents. "
-                    "Open Desktop. "
-                    "Open Pictures."
-                ),
-            )
-
-        # ==================================================
+        # ====================================================
         # BUILD TRANSCRIPT
-        # ==================================================
+        # ====================================================
 
         transcript = " ".join(
             segment.text.strip()
@@ -167,24 +222,17 @@ async def transcribe_voice(
             transcript
         )
 
-        # ==================================================
+        # ====================================================
         # RESPONSE
-        # ==================================================
+        # ====================================================
 
         return {
-
-            "success":
-                True,
-
-            "text":
-                transcript,
-
-            "language":
-                info.language,
+            "success": True,
+            "text": transcript,
+            "language": info.language,
         }
 
     except HTTPException:
-
         raise
 
     except Exception as error:
@@ -201,22 +249,17 @@ async def transcribe_voice(
 
     finally:
 
-        # ==================================================
+        # ====================================================
         # DELETE TEMP FILE
-        # ==================================================
+        # ====================================================
 
         if (
             temp_path
-            and os.path.exists(
-                temp_path
-            )
+            and os.path.exists(temp_path)
         ):
 
             try:
-
-                os.remove(
-                    temp_path
-                )
+                os.remove(temp_path)
 
             except Exception:
                 pass
