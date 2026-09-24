@@ -1,0 +1,13 @@
+{
+  "name": "garuda-ai",
+  "version": "1.0.0",
+  "description": "Garuda AI - Intelligent Desktop & Web Companion",
+  "private": true,
+  "scripts": {
+    "build": "npm --prefix backend/frontend install && npm --prefix backend/frontend run build",
+    "deploy": "wrangler deploy"
+  },
+  "devDependencies": {
+    "wrangler": "^4.137.0"
+  }
+}

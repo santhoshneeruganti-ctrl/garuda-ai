@@ -1,0 +1,9 @@
+name = "garuda-ai"
+compatibility_date = "2026-09-24"
+
+[build]
+command = "npm --prefix backend/frontend install && npm --prefix backend/frontend run build"
+
+[assets]
+directory = "./backend/frontend/dist"
+not_found_handling = "single-page-application"
