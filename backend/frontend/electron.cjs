@@ -1062,6 +1062,30 @@ if (!gotSingleInstanceLock) {
         return { success: true, path: resolved };
     });
 
+    // Added missing handler to fix the error completely:
+    ipcMain.handle("garuda-get-custom-folders", async () => {
+        try {
+            return { success: true, folders: [...garudaCustomFolders] };
+        } catch (error) {
+            return { success: false, error: error.message, folders: [] };
+        }
+    });
+
+    // Added missing handler for removing folders:
+    ipcMain.handle("garuda-remove-folder", async (event, folderPath) => {
+        if (!folderPath) return { success: false, error: "Invalid path" };
+        const resolved = path.resolve(folderPath);
+        const deleted = garudaCustomFolders.delete(resolved);
+        if (deleted) {
+            saveGarudaCustomFolders();
+            garudaFileIndexReady = false;
+            await buildGarudaFileIndex();
+            console.log("🗑️ Garuda Smart Folder removed:", resolved);
+            return { success: true, path: resolved };
+        }
+        return { success: false, error: "Folder not found in custom list" };
+    });
+
     ipcMain.handle("volume-up", async () => sendVolumeKey(175));
     ipcMain.handle("volume-down", async () => sendVolumeKey(174));
     ipcMain.handle("volume-mute", async () => sendVolumeKey(173));
