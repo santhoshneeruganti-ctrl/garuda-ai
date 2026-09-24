@@ -1,8 +1,10 @@
+import os
+
 from jose import jwt, JWTError
 from datetime import datetime, timedelta
 
 # Secret key used to sign JWT tokens
-SECRET_KEY = "garuda_super_secret_key_2026"
+SECRET_KEY = os.getenv("JWT_SECRET_KEY")
 
 # JWT encryption algorithm
 ALGORITHM = "HS256"
