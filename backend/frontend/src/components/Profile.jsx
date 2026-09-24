@@ -4,6 +4,7 @@ import {
 } from "react";
 
 import axios from "axios";
+import { API_BASE_URL } from "../config/api";
 
 import ChangePassword from "./ChangePassword";
 
@@ -122,7 +123,7 @@ function Profile({
 
       const response =
         await axios.get(
-          "http://127.0.0.1:8000/profile",
+          `${API_BASE_URL}/profile`,
           {
             headers: {
 
@@ -330,7 +331,7 @@ function Profile({
 
       const response =
         await axios.put(
-          "http://127.0.0.1:8000/profile",
+          `${API_BASE_URL}/profile`,
           {
             username,
           },

@@ -12,6 +12,7 @@ import remarkGfm from "remark-gfm";
 
 import CodeBlock from "./CodeBlock";
 import MiniQuestionBox from "./chat/MiniQuestionBox";
+import { API_BASE_URL } from "../config/api";
 
 import "../styles/chat.css";
 
@@ -161,7 +162,7 @@ const ImageAttachments = memo(function ImageAttachments({ images = [] }) {
           if (!imageId) return null;
 
           const imageUrl =
-            image.url || `http://127.0.0.1:8000/image/view/${imageId}`;
+            image.url || `${API_BASE_URL}/image/view/${imageId}`;
 
           return (
             <button

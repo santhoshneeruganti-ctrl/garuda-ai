@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import { API_BASE_URL } from "../config/api";
 import "./auth.css";
 
 function Register({ onLogin }) {
@@ -45,7 +46,7 @@ function Register({ onLogin }) {
       setLoading(true);
 
       const response = await axios.post(
-        "http://127.0.0.1:8000/register",
+        `${API_BASE_URL}/register`,
         {
           username: username.trim(),
           email: email.trim(),

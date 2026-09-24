@@ -3,6 +3,7 @@ import {
 } from "react";
 
 import axios from "axios";
+import { API_BASE_URL } from "../config/api";
 
 import "../styles/profile.css";
 
@@ -175,7 +176,7 @@ function ChangePassword({
 
       const response =
         await axios.post(
-          "http://127.0.0.1:8000/change-password",
+          `${API_BASE_URL}/change-password`,
 
           {
 

@@ -22,6 +22,7 @@ import Header from "./components/Header";
 import {
   executeGarudaCommand,
 } from "./services/garudaCommandEngine";
+import { API_BASE_URL } from "./config/api";
 
 import "./styles/layout.css";
 
@@ -559,7 +560,7 @@ function App() {
 
       const response =
         await axios.get(
-          "http://127.0.0.1:8000/chats"
+          `${API_BASE_URL}/chats`
         );
 
 
@@ -794,7 +795,7 @@ function App() {
     try {
 
       await axios.put(
-        `http://127.0.0.1:8000/chat/${chatId}/title`,
+        `${API_BASE_URL}/chat/${chatId}/title`,
         {
           title,
         }
@@ -838,7 +839,7 @@ function App() {
     try {
 
       await axios.delete(
-        `http://127.0.0.1:8000/chat/${chatId}`
+        `${API_BASE_URL}/chat/${chatId}`
       );
 
 
@@ -908,7 +909,7 @@ function App() {
 
       const response =
         await axios.get(
-          `http://127.0.0.1:8000/chat/${chatId}`
+          `${API_BASE_URL}/chat/${chatId}`
         );
 
 
@@ -958,7 +959,7 @@ function App() {
                             image?.url ||
                             (
                               imageId
-                                ? `http://127.0.0.1:8000/image/view/${imageId}`
+                                ? `${API_BASE_URL}/image/view/${imageId}`
                                 : ""
                             ),
 
@@ -1371,7 +1372,7 @@ function App() {
 
         const createResponse =
           await axios.post(
-            "http://127.0.0.1:8000/new-chat",
+            `${API_BASE_URL}/new-chat`,
             {
               title:
                 "New Chat",
@@ -1623,7 +1624,7 @@ function App() {
 
       const response =
         await fetch(
-          "http://127.0.0.1:8000/chat/stream",
+          `${API_BASE_URL}/chat/stream`,
           {
             method:
               "POST",
@@ -2162,7 +2163,7 @@ function App() {
 
         const response =
           await fetch(
-            "http://127.0.0.1:8000/chat/regenerate",
+            `${API_BASE_URL}/chat/regenerate`,
             {
 
               method:
@@ -2522,7 +2523,7 @@ function App() {
 
         const response =
           await fetch(
-            "http://127.0.0.1:8000/chat/edit",
+            `${API_BASE_URL}/chat/edit`,
             {
 
               method:
@@ -3415,7 +3416,7 @@ function App() {
 
               const createResponse =
                 await axios.post(
-                  "http://127.0.0.1:8000/new-chat",
+                  `${API_BASE_URL}/new-chat`,
                   {
                     title:
                       "New Chat",

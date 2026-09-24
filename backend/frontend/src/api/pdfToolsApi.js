@@ -1,7 +1,8 @@
 import axios from "axios";
+import { API_BASE_URL } from "../config/api";
 
 const API = axios.create({
-    baseURL: "http://localhost:8000",
+    baseURL: API_BASE_URL,
 });
 
 export async function summarizePdf(chatId) {

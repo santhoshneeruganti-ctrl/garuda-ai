@@ -8,6 +8,7 @@ import {
 import {
     executeGarudaCommand,
 } from "../services/garudaCommandEngine";
+import { API_BASE_URL } from "../config/api";
 
 
 // ======================================================
@@ -212,7 +213,7 @@ export default function useChat(
 
                 const response =
                     await fetch(
-                        "http://127.0.0.1:8000/voice/speak",
+                        `${API_BASE_URL}/voice/speak`,
                         {
                             method: "POST",
 
@@ -654,7 +655,7 @@ export default function useChat(
 
             const response =
                 await fetch(
-                    "http://127.0.0.1:8000/chat/stream",
+                    `${API_BASE_URL}/chat/stream`,
                     {
                         method:
                             "POST",
@@ -993,7 +994,7 @@ export default function useChat(
 
             const response =
                 await fetch(
-                    "http://127.0.0.1:8000/chat/regenerate",
+                    `${API_BASE_URL}/chat/regenerate`,
                     {
                         method:
                             "POST",
@@ -1291,7 +1292,7 @@ export default function useChat(
 
             const response =
                 await fetch(
-                    "http://127.0.0.1:8000/chat/edit",
+                    `${API_BASE_URL}/chat/edit`,
                     {
                         method:
                             "POST",
@@ -1530,7 +1531,7 @@ export default function useChat(
 
             const response =
                 await fetch(
-                    "http://127.0.0.1:8000/chat/follow-up",
+                    `${API_BASE_URL}/chat/follow-up`,
                     {
                         method:
                             "POST",

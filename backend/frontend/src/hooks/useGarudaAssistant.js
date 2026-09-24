@@ -3,6 +3,7 @@ import {
     useRef,
     useState,
 } from "react";
+import { API_BASE_URL } from "../config/api";
 
 export default function useGarudaAssistant(
     enabled,
@@ -134,7 +135,7 @@ export default function useGarudaAssistant(
 
             try {
                 response = await fetch(
-                    "http://127.0.0.1:8000/voice/transcribe",
+                    `${API_BASE_URL}/voice/transcribe`,
                     {
                         method: "POST",
                         body: formData,
