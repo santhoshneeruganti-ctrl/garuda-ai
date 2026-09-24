@@ -3,9 +3,13 @@ from fastapi.responses import FileResponse
 from pydantic import BaseModel
 from starlette.background import BackgroundTask
 
-import pyttsx3
 import tempfile
 import os
+
+try:
+    import pyttsx3
+except (ImportError, Exception):
+    pyttsx3 = None
 
 
 router = APIRouter(
@@ -59,6 +63,12 @@ async def speak_text(request: TTSRequest):
         # ==================================================
         # PYTTSX3
         # ==================================================
+
+        if pyttsx3 is None:
+            raise HTTPException(
+                status_code=501,
+                detail="Text-to-speech engine (pyttsx3) is not available on this server environment."
+            )
 
         engine = pyttsx3.init()
 

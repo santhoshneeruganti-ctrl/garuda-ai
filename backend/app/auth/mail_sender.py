@@ -9,9 +9,7 @@ load_dotenv()
 EMAIL = os.getenv("EMAIL")
 EMAIL_PASSWORD = os.getenv("EMAIL_PASSWORD")
 
-# DEBUG
-print("EMAIL =", repr(EMAIL))
-print("EMAIL_PASSWORD =", repr(EMAIL_PASSWORD))
+
 
 
 def send_otp(receiver_email: str, otp: str):
@@ -50,8 +48,6 @@ Garuda Team
 
         print("TLS Started")
         print("Logging into Gmail...")
-        print("EMAIL:", repr(EMAIL))
-        print("PASSWORD:", repr(EMAIL_PASSWORD))
 
         server.login(
             EMAIL,
